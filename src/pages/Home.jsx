@@ -8,82 +8,108 @@ const Home = () => {
         <>
             {/* Hero Section */}
             <section className="hero" style={{
-                background: 'linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%)',
-                color: 'white',
+                background: 'var(--primary)',
+                color: 'var(--text-white)',
                 padding: '8rem 0 6rem',
-                textAlign: 'center'
+                position: 'relative',
+                overflow: 'hidden'
             }}>
-                <div className="container">
-                    <h1 style={{ fontSize: '3.5rem', marginBottom: '1.5rem', color: 'white' }}>
-                        Innovative Software Solutions<br />
-                        <span style={{ color: 'var(--accent)' }}>for Modern Businesses</span>
+                <div style={{
+                    position: 'absolute',
+                    top: '-50%',
+                    right: '-20%',
+                    width: '800px',
+                    height: '800px',
+                    background: 'radial-gradient(circle, rgba(100,255,218,0.1) 0%, rgba(10,25,47,0) 70%)',
+                    borderRadius: '50%',
+                    pointerEvents: 'none'
+                }}></div>
+
+                <div className="container" style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
+                    <h4 style={{ color: 'var(--accent)', fontWeight: 400, letterSpacing: '0.1em', marginBottom: '1.5rem', textTransform: 'uppercase', fontSize: '1rem' }}>
+                        Enterprise-Grade Solutions
+                    </h4>
+                    <h1 style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', marginBottom: '1.5rem', color: 'var(--text-white)', fontWeight: 800 }}>
+                        Build the Future with<br />
+                        <span style={{ color: 'var(--text-white)', opacity: 0.9 }}>Intelligent Software</span>
                     </h1>
-                    <p style={{ fontSize: '1.25rem', color: '#cbd5e1', maxWidth: '800px', margin: '0 auto 3rem' }}>
-                        We help ambitious startups and established enterprises scale with custom software development, cloud strategies, and intelligent automation.
+                    <p style={{ fontSize: '1.25rem', color: 'var(--text-light)', maxWidth: '700px', margin: '0 auto 3rem', lineHeight: 1.8 }}>
+                        We design and develop scalable digital products for forward-thinking companies. From cloud architecture to AI-driven applications.
                     </p>
-                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-                        <Link to="/contact" className="btn btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                            Start Your Project <ArrowRight size={20} />
+                    <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <Link to="/contact" className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
+                            Start Your Project
                         </Link>
-                        <Link to="/portfolio" className="btn btn-secondary" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.2)' }}>
-                            View Our Work
+                        <Link to="/portfolio" className="btn" style={{ color: 'var(--text-white)', borderBottom: '1px solid var(--accent)', borderRadius: 0, padding: '0.5rem 0' }}>
+                            View Case Studies <ArrowRight size={18} style={{ marginLeft: '0.5rem' }} />
                         </Link>
                     </div>
                 </div>
             </section>
 
             {/* Trusted By Strip */}
-            <div style={{ background: 'white', borderBottom: '1px solid #e2e8f0', padding: '2rem 0' }}>
+            <div style={{ background: 'var(--bg-white)', borderBottom: '1px solid var(--border)', padding: '3rem 0' }}>
                 <div className="container">
-                    <p className="text-center" style={{ fontSize: '0.875rem', color: '#64748b', marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Trusted by industry leaders</p>
-                    <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', flexWrap: 'wrap', alignItems: 'center', opacity: 0.6 }}>
-                        <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#475569' }}>Acme Corp</h3>
-                        <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#475569' }}>GlobalTech</h3>
-                        <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#475569' }}>Nebula Systems</h3>
-                        <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#475569' }}>Vertex Dynamics</h3>
-                        <h3 style={{ margin: 0, fontSize: '1.25rem', color: '#475569' }}>Flux Industries</h3>
+                    <p className="text-center" style={{ fontSize: '0.875rem', color: 'var(--text-light)', marginBottom: '2rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Trusted by industry leaders</p>
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '4rem', flexWrap: 'wrap', alignItems: 'center', opacity: 0.7, filter: 'grayscale(100%)' }}>
+                        <h3 style={{ margin: 0, fontSize: '1.5rem', color: 'var(--primary-light)' }}>Acme Corp</h3>
+                        <h3 style={{ margin: 0, fontSize: '1.5rem', color: 'var(--primary-light)' }}>GlobalTech</h3>
+                        <h3 style={{ margin: 0, fontSize: '1.5rem', color: 'var(--primary-light)' }}>Nebula</h3>
+                        <h3 style={{ margin: 0, fontSize: '1.5rem', color: 'var(--primary-light)' }}>Vertex</h3>
+                        <h3 style={{ margin: 0, fontSize: '1.5rem', color: 'var(--primary-light)' }}>Flux</h3>
                     </div>
                 </div>
             </div>
 
             {/* Services Overview */}
-            <section className="section-padding">
+            <section className="section-padding" style={{ background: 'var(--bg-light)' }}>
                 <div className="container">
-                    <div className="text-center" style={{ marginBottom: '4rem' }}>
-                        <h2 style={{ fontSize: '2.5rem' }}>What We Do</h2>
-                        <p>End-to-end development services tailored to your needs</p>
+                    <div style={{ maxWidth: '800px', margin: '0 auto 5rem auto', textAlign: 'center' }}>
+                        <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Engineering Excellence</h2>
+                        <p style={{ fontSize: '1.1rem', color: 'var(--text-light)' }}>
+                            We bring top-tier engineering to solve complex business challenges.
+                        </p>
                     </div>
 
                     <div className="grid-3">
-                        <div className="card">
-                            <div style={{ background: '#e0f2fe', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-                                <Code color="var(--accent)" />
+                        <div className="card" style={{ padding: '3rem 2rem' }}>
+                            <div style={{ background: 'rgba(10, 25, 47, 0.05)', width: '60px', height: '60px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '2rem' }}>
+                                <Code color="var(--primary)" size={28} />
                             </div>
-                            <h3>Custom Software</h3>
-                            <p>Tailor-made software solutions designed to streamline your business operations and drive efficiency.</p>
+                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Custom Software</h3>
+                            <p style={{ color: 'var(--text-light)', marginBottom: '2rem' }}>
+                                Full-cycle development tailored to your specific business logic and requirements.
+                            </p>
+                            <Link to="/services" style={{ color: 'var(--primary)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                Learn more <ArrowRight size={16} />
+                            </Link>
                         </div>
 
-                        <div className="card">
-                            <div style={{ background: '#e0f2fe', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-                                <Layout color="var(--accent)" />
+                        <div className="card" style={{ padding: '3rem 2rem', background: 'var(--primary)', color: 'white', borderColor: 'var(--primary)' }}>
+                            <div style={{ background: 'rgba(255, 255, 255, 0.1)', width: '60px', height: '60px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '2rem' }}>
+                                <Layout color="var(--accent)" size={28} />
                             </div>
-                            <h3>Web Applications</h3>
-                            <p>High-performance, scalable web apps built with modern frameworks like React and Next.js.</p>
+                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'white' }}>Web Applications</h3>
+                            <p style={{ color: 'var(--text-light)', marginBottom: '2rem' }}>
+                                Scalable, high-performance web apps using React, Node.js, and modern cloud architecture.
+                            </p>
+                            <Link to="/services" style={{ color: 'var(--accent)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                Learn more <ArrowRight size={16} />
+                            </Link>
                         </div>
 
-                        <div className="card">
-                            <div style={{ background: '#e0f2fe', width: '50px', height: '50px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1.5rem' }}>
-                                <Database color="var(--accent)" />
+                        <div className="card" style={{ padding: '3rem 2rem' }}>
+                            <div style={{ background: 'rgba(10, 25, 47, 0.05)', width: '60px', height: '60px', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '2rem' }}>
+                                <Database color="var(--primary)" size={28} />
                             </div>
-                            <h3>Cloud & DevOps</h3>
-                            <p>Secure cloud infrastructure setup, migration, and CI/CD pipelines on AWS and Azure.</p>
+                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Cloud Infrastructure</h3>
+                            <p style={{ color: 'var(--text-light)', marginBottom: '2rem' }}>
+                                Secure, scalable cloud solutions on AWS and Azure with automated CI/CD pipelines.
+                            </p>
+                            <Link to="/services" style={{ color: 'var(--primary)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                Learn more <ArrowRight size={16} />
+                            </Link>
                         </div>
-                    </div>
-
-                    <div className="text-center" style={{ marginTop: '3rem' }}>
-                        <Link to="/services" style={{ fontWeight: 600, color: 'var(--accent)', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-                            View All Services <ArrowRight size={16} />
-                        </Link>
                     </div>
                 </div>
             </section>
@@ -93,53 +119,84 @@ const Home = () => {
                 <div className="container">
                     <div className="grid-2" style={{ alignItems: 'center' }}>
                         <div>
-                            <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>Why Partner with Bitryx?</h2>
-                            <p style={{ marginBottom: '2rem' }}>
-                                We don't just write code; we build digital products that solve real business problems. Our team of senior engineers and designers ensures quality at every step.
+                            <h4 style={{ color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '1rem', fontWeight: 600 }}>Why Bitryx?</h4>
+                            <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem', lineHeight: 1.2 }}>We Don't Just Write Code.<br />We Build Assets.</h2>
+                            <p style={{ marginBottom: '3rem', fontSize: '1.1rem', color: 'var(--text-light)' }}>
+                                In a world of digital noise, we deliver clarity and quality. Our team consists of senior engineers dedicated to robust architecture and seamless user experiences.
                             </p>
 
-                            <ul style={{ display: 'grid', gap: '1.5rem' }}>
-                                <li style={{ display: 'flex', gap: '1rem' }}>
-                                    <Zap color="var(--accent)" />
+                            <ul style={{ display: 'grid', gap: '2rem' }}>
+                                <li style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+                                    <div style={{ marginTop: '0.25rem' }}><Zap color="var(--primary)" size={24} /></div>
                                     <div>
-                                        <strong>Agile & Fast</strong>
-                                        <p style={{ fontSize: '0.9rem', color: 'var(--text-light)' }}>Rapid prototyping and iterative development cycles.</p>
+                                        <strong style={{ display: 'block', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Velocity & Agility</strong>
+                                        <p style={{ color: 'var(--text-light)' }}>Rapid iterations with a focus on delivering value from day one.</p>
                                     </div>
                                 </li>
-                                <li style={{ display: 'flex', gap: '1rem' }}>
-                                    <Shield color="var(--accent)" />
+                                <li style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+                                    <div style={{ marginTop: '0.25rem' }}><Shield color="var(--primary)" size={24} /></div>
                                     <div>
-                                        <strong>Enterprise Security</strong>
-                                        <p style={{ fontSize: '0.9rem', color: 'var(--text-light)' }}>Security-first approach protecting your data and IP.</p>
+                                        <strong style={{ display: 'block', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Enterprise-Grade Security</strong>
+                                        <p style={{ color: 'var(--text-light)' }}>Built-in security best practices to protect your data and IP.</p>
                                     </div>
                                 </li>
-                                <li style={{ display: 'flex', gap: '1rem' }}>
-                                    <Code color="var(--accent)" />
+                                <li style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+                                    <div style={{ marginTop: '0.25rem' }}><Code color="var(--primary)" size={24} /></div>
                                     <div>
-                                        <strong>Clean Code</strong>
-                                        <p style={{ fontSize: '0.9rem', color: 'var(--text-light)' }}>Maintainable, scalable, and well-documented codebase.</p>
+                                        <strong style={{ display: 'block', fontSize: '1.1rem', marginBottom: '0.5rem' }}>Sustainable Code</strong>
+                                        <p style={{ color: 'var(--text-light)' }}>Clean, documented, and testable code that is easy to maintain.</p>
                                     </div>
                                 </li>
                             </ul>
                         </div>
-                        <div style={{ position: 'relative', height: '400px', background: 'radial-gradient(circle at center, #f1f5f9 0%, #ffffff 100%)', borderRadius: '1rem', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-                            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '300px', height: '300px', background: 'conic-gradient(from 180deg at 50% 50%, #eff6ff 0deg, #ecfeff 180deg, #eff6ff 360deg)', borderRadius: '50%', opacity: 0.5, filter: 'blur(40px)' }}></div>
-
-                            <div style={{ position: 'absolute', top: '20%', left: '20%', background: 'white', padding: '1.5rem', borderRadius: '12px', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)', display: 'flex', alignItems: 'center', gap: '0.75rem', transform: 'rotate(-5deg)' }}>
-                                <div style={{ background: '#dbeafe', padding: '0.5rem', borderRadius: '8px' }}><Zap size={24} color="#2563eb" /></div>
-                                <div><strong>Fast Delivery</strong><br /><span style={{ fontSize: '0.8rem', color: '#64748b' }}>2-week Sprints</span></div>
-                            </div>
-
-                            <div style={{ position: 'absolute', bottom: '20%', right: '15%', background: 'white', padding: '1.5rem', borderRadius: '12px', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)', display: 'flex', alignItems: 'center', gap: '0.75rem', transform: 'rotate(5deg)' }}>
-                                <div style={{ background: '#dcfce7', padding: '0.5rem', borderRadius: '8px' }}><Shield size={24} color="#059669" /></div>
-                                <div><strong>Secure Core</strong><br /><span style={{ fontSize: '0.8rem', color: '#64748b' }}>ISO 27001 Compliant</span></div>
-                            </div>
-
-                            <div style={{ position: 'absolute', top: '40%', right: '20%', background: 'white', padding: '1rem', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}>
-                                <code style={{ fontFamily: 'monospace', color: '#0f172a', fontSize: '0.9rem' }}>
-                                    git commit -m "feat: scale"<br />
-                                    git push origin main
+                        <div style={{ position: 'relative' }}>
+                            <div style={{
+                                background: 'white',
+                                border: '1px solid var(--border)',
+                                borderRadius: '1rem',
+                                padding: '2rem',
+                                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.1)'
+                            }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2rem', borderBottom: '1px solid var(--bg-light)', paddingBottom: '1rem' }}>
+                                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ef4444' }}></div>
+                                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#eab308' }}></div>
+                                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#22c55e' }}></div>
+                                    </div>
+                                    <div style={{ fontSize: '0.8rem', color: '#94a3b8', fontFamily: 'monospace' }}>server.js</div>
+                                </div>
+                                <code style={{ fontFamily: 'monospace', fontSize: '0.9rem', color: '#334155', display: 'block', lineHeight: 1.8 }}>
+                                    <span style={{ color: '#8b5cf6' }}>const</span> <span style={{ color: '#0ea5e9' }}>scaleParams</span> = {'{'}<br />
+                                    &nbsp;&nbsp;mode: <span style={{ color: '#16a34a' }}>'cluster'</span>,<br />
+                                    &nbsp;&nbsp;instances: <span style={{ color: '#f59e0b' }}>'max'</span>,<br />
+                                    &nbsp;&nbsp;monitoring: <span style={{ color: '#0ea5e9' }}>true</span><br />
+                                    {'}'};<br /><br />
+                                    <span style={{ color: '#64748b' }}>// Initialize high-performance cluster</span><br />
+                                    <span style={{ color: '#8b5cf6' }}>await</span> <span style={{ color: '#0ea5e9' }}>System</span>.optimize(<span style={{ color: '#0ea5e9' }}>scaleParams</span>);
                                 </code>
+                            </div>
+
+                            {/* Floating Badge */}
+                            <div style={{
+                                position: 'absolute',
+                                bottom: '-2rem',
+                                left: '-2rem',
+                                background: 'var(--primary)',
+                                color: 'white',
+                                padding: '1.5rem',
+                                borderRadius: '8px',
+                                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                                display: 'flex',
+                                gap: '1rem',
+                                alignItems: 'center'
+                            }}>
+                                <div style={{ background: 'rgba(255,255,255,0.1)', padding: '0.75rem', borderRadius: '4px' }}>
+                                    <Zap size={24} color="var(--accent)" />
+                                </div>
+                                <div>
+                                    <div style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--accent)' }}>99.9%</div>
+                                    <div style={{ fontSize: '0.875rem', opacity: 0.8 }}>Uptime Guarantee</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -147,14 +204,14 @@ const Home = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="section-padding bg-primary" style={{ textAlign: 'center', color: 'white' }}>
+            <section className="section-padding" style={{ background: 'var(--primary)', color: 'var(--text-white)', textAlign: 'center' }}>
                 <div className="container">
-                    <h2 style={{ color: 'white', marginBottom: '1rem' }}>Ready to Transform Your Business?</h2>
-                    <p style={{ maxWidth: '600px', margin: '0 auto 2rem', color: '#cbd5e1' }}>
-                        Let's discuss your project and see how we can help you achieve your goals with technology.
+                    <h2 style={{ color: 'white', marginBottom: '1.5rem', fontSize: '2.5rem' }}>Ready to Scale?</h2>
+                    <p style={{ maxWidth: '600px', margin: '0 auto 2.5rem', color: 'var(--text-light)', fontSize: '1.1rem' }}>
+                        Book a free technical consultation with our senior architects. No sales fluff, just engineering capabilities.
                     </p>
-                    <Link to="/contact" className="btn btn-primary" style={{ fontSize: '1.1rem', padding: '1rem 2rem' }}>
-                        Book a Free Consultation
+                    <Link to="/contact" className="btn btn-primary" style={{ padding: '1rem 3rem', fontSize: '1.1rem' }}>
+                        Schedule Consultation
                     </Link>
                 </div>
             </section>
