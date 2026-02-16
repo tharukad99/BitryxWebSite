@@ -43,7 +43,7 @@ const Navbar = () => {
 
                 {/* Logo Section */}
                 <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
-                    <div style={{ position: 'relative', width: '45px', height: '45px' }}>
+                    <div style={{ position: 'relative', width: '60px', height: '60px' }}>
                         <img
                             src={`${import.meta.env.BASE_URL}logo.png`}
                             alt="Bitryx Logo"
