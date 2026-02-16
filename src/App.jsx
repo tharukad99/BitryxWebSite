@@ -11,7 +11,7 @@ import './styles/main.css';
 
 function App() {
     return (
-        <Router basename="/BitryxWebSite">
+        <Router basename={import.meta.env.MODE === 'production' ? '/BitryxWebSite' : '/'}>
             <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
                 <Navbar />
                 <main style={{ flex: 1 }}>

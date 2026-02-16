@@ -2,7 +2,9 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-  base: "/BitryxWebSite/",
+export default defineConfig(({ command, mode }) => {
+  return {
+    plugins: [react()],
+    base: mode === 'production' ? '/BitryxWebSite/' : '/',
+  };
 })

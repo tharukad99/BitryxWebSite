@@ -13,7 +13,7 @@ const Navbar = () => {
             <nav className="navbar">
                 <div className="container navbar-content">
                     <Link to="/" className="logo">
-                        <img src="/logo.png" alt="Bitryx" style={{ height: '60px' }} />
+                        <img src={import.meta.env.BASE_URL + "logo.png"} alt="Bitryx" style={{ height: '60px' }} />
                     </Link>
 
                     <div className="nav-links">
