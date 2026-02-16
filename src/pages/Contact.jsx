@@ -33,20 +33,20 @@ const Contact = () => {
                         </p>
 
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                            <div className="card-glass" style={{ padding: '1.5rem', display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-                                <div style={{ color: 'var(--electric-blue)' }}><Mail size={24} /></div>
+                            <div className="card-service" style={{ padding: '1.5rem', display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+                                <div style={{ color: 'var(--blue-accent)' }}><Mail size={24} /></div>
                                 <div>
-                                    <h3 style={{ fontSize: '1rem', marginBottom: '0.25rem', color: 'var(--white-slate)' }}>Chat with us</h3>
-                                    <p style={{ color: 'var(--blue-slate)', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Our friendly team is here to help.</p>
+                                    <h3 style={{ fontSize: '1rem', marginBottom: '0.25rem', color: 'var(--navy-dark)' }}>Chat with us</h3>
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Our friendly team is here to help.</p>
                                     <a href="mailto:hello@bitryx.com" className="text-accent font-mono">hello@bitryx.com</a>
                                 </div>
                             </div>
 
-                            <div className="card-glass" style={{ padding: '1.5rem', display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
-                                <div style={{ color: 'var(--electric-blue)' }}><MapPin size={24} /></div>
+                            <div className="card-service" style={{ padding: '1.5rem', display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
+                                <div style={{ color: 'var(--blue-accent)' }}><MapPin size={24} /></div>
                                 <div>
-                                    <h3 style={{ fontSize: '1rem', marginBottom: '0.25rem', color: 'var(--white-slate)' }}>Office</h3>
-                                    <p style={{ color: 'var(--blue-slate)', fontSize: '0.9rem' }}>
+                                    <h3 style={{ fontSize: '1rem', marginBottom: '0.25rem', color: 'var(--navy-dark)' }}>Office</h3>
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
                                         123 Tech Avenue, London<br />
                                         United Kingdom
                                     </p>
@@ -60,43 +60,43 @@ const Contact = () => {
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        className="card-glass"
+                        className="card-service"
                         style={{ padding: '3rem' }}
                     >
                         <form onSubmit={(e) => e.preventDefault()}>
                             <div style={{ marginBottom: '1.5rem' }}>
-                                <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--white-slate)', fontSize: '0.9rem' }}>Name</label>
+                                <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: 600 }}>Name</label>
                                 <input
                                     type="text"
                                     placeholder="Jane Doe"
                                     style={{
                                         width: '100%', padding: '1rem', borderRadius: '4px',
-                                        border: '1px solid var(--navy-lighter)', outline: 'none',
-                                        background: 'var(--navy)', color: 'white', fontSize: '1rem'
+                                        border: '1px solid var(--border)', outline: 'none',
+                                        background: 'var(--bg-light)', color: 'var(--text-primary)', fontSize: '1rem'
                                     }}
                                 />
                             </div>
                             <div style={{ marginBottom: '1.5rem' }}>
-                                <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--white-slate)', fontSize: '0.9rem' }}>Email</label>
+                                <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: 600 }}>Email</label>
                                 <input
                                     type="email"
                                     placeholder="jane@company.com"
                                     style={{
                                         width: '100%', padding: '1rem', borderRadius: '4px',
-                                        border: '1px solid var(--navy-lighter)', outline: 'none',
-                                        background: 'var(--navy)', color: 'white', fontSize: '1rem'
+                                        border: '1px solid var(--border)', outline: 'none',
+                                        background: 'var(--bg-light)', color: 'var(--text-primary)', fontSize: '1rem'
                                     }}
                                 />
                             </div>
                             <div style={{ marginBottom: '2rem' }}>
-                                <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--white-slate)', fontSize: '0.9rem' }}>Message</label>
+                                <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: 600 }}>Message</label>
                                 <textarea
                                     placeholder="Tell us about your project..."
                                     rows="5"
                                     style={{
                                         width: '100%', padding: '1rem', borderRadius: '4px',
-                                        border: '1px solid var(--navy-lighter)', outline: 'none',
-                                        background: 'var(--navy)', color: 'white', fontSize: '1rem', fontFamily: 'inherit'
+                                        border: '1px solid var(--border)', outline: 'none',
+                                        background: 'var(--bg-light)', color: 'var(--text-primary)', fontSize: '1rem', fontFamily: 'inherit'
                                     }}
                                 ></textarea>
                             </div>
