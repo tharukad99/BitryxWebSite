@@ -56,7 +56,7 @@ const Navbar = () => {
                         color: scrolled ? 'var(--navy-dark)' : 'var(--navy-dark)',
                         letterSpacing: '-0.5px'
                     }}>
-                        Bitryx
+                        BitRyx
                     </span>
                 </Link>
 
