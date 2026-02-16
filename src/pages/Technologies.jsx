@@ -1,82 +1,97 @@
-import React from 'react';
-import { Database, Server, Smartphone, Globe, Cpu, Wrench } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Database, Layout, Server, Cloud } from 'lucide-react';
 import '../styles/main.css';
 
 const Technologies = () => {
-    const categories = [
+    const techData = [
         {
-            title: 'Frontend',
-            icon: <Globe size={24} color="var(--accent)" />,
-            items: ['React', 'Next.js', 'Vue.js', 'TypeScript', 'Tailwind CSS', 'HTML5 & CSS3']
+            category: "Frontend",
+            icon: <Layout size={32} />,
+            items: ["React", "JavaScript", "HTML5", "CSS3", "Tailwind CSS", "Vite"]
         },
         {
-            title: 'Backend',
-            icon: <Server size={24} color="var(--accent)" />,
-            items: ['.NET Core', 'Python (Django/FastAPI)', 'Node.js (Express)', 'Go', 'PHP (Laravel)']
+            category: "Backend",
+            icon: <Server size={32} />,
+            items: ["Node.js", ".NET Core", "Python", "REST APIs", "GraphQL"]
         },
         {
-            title: 'Databases',
-            icon: <Database size={24} color="var(--accent)" />,
-            items: ['SQL Server', 'PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'DynamoDB']
+            category: "Data",
+            icon: <Database size={32} />,
+            items: ["SQL Server", "PostgreSQL", "MongoDB", "Redis"]
         },
         {
-            title: 'Cloud & DevOps',
-            icon: <Cpu size={24} color="var(--accent)" />,
-            items: ['AWS (EC2, Lambda, S3)', 'Azure', 'Google Cloud', 'Docker', 'Kubernetes', 'Terraform']
-        },
-        {
-            title: 'Tools & CI/CD',
-            icon: <Wrench size={24} color="var(--accent)" />,
-            items: ['Git & GitHub', 'GitLab CI', 'Jenkins', 'Jira', 'Postman', 'Figma']
-        },
-        {
-            title: 'AI & Data',
-            icon: <Smartphone size={24} color="var(--accent)" />,
-            items: ['OpenAI API', 'Hugging Face', 'PyTorch', 'TensorFlow', 'Pandas', 'Apache Spark']
+            category: "Cloud & DevOps",
+            icon: <Cloud size={32} />,
+            items: ["Azure", "AWS", "Docker", "Kubernetes", "CI/CD"]
         }
     ];
 
+    const itemVariants = {
+        hidden: { opacity: 0, scale: 0.9 },
+        visible: { opacity: 1, scale: 1 }
+    };
+
     return (
-        <div style={{ paddingBottom: '4rem' }}>
-            <section className="bg-primary text-center" style={{ padding: '6rem 0 4rem', color: 'white' }}>
+        <div style={{ paddingTop: 'var(--header-height)' }}>
+            <section className="bg-navy text-white text-center" style={{ padding: '6rem 0 4rem', background: 'var(--navy)' }}>
                 <div className="container">
-                    <h1 style={{ color: 'white' }}>Our Technology Stack</h1>
-                    <p style={{ maxWidth: '600px', margin: '0 auto', color: '#cbd5e1' }}>
-                        We leverage the latest and most reliable technologies to build scalable, high-performance solutions.
+                    <motion.h1
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        style={{ color: 'white', marginBottom: '1rem', fontSize: '3rem' }}
+                    >
+                        Technology Stack
+                    </motion.h1>
+                    <p style={{ color: 'var(--text-light)', maxWidth: '600px', margin: '0 auto', fontSize: '1.2rem' }}>
+                        We choose the right tools for the job, favoring scalability and maintainability.
                     </p>
                 </div>
             </section>
 
-            <section className="section-padding">
-                <div className="container">
-                    <div className="grid-2">
-                        {categories.map((cat, index) => (
-                            <div key={index} className="card" style={{ padding: '2rem' }}>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-                                    <div style={{ background: '#e0f2fe', padding: '0.75rem', borderRadius: '8px' }}>
-                                        {cat.icon}
-                                    </div>
-                                    <h3 style={{ margin: 0 }}>{cat.title}</h3>
+            <div className="container section">
+                <div className="grid-2">
+                    {techData.map((tech, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.1 }}
+                            className="card"
+                            style={{ padding: '2.5rem' }}
+                        >
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+                                <div style={{ color: 'var(--electric-blue)', background: 'var(--bg-light)', padding: '0.75rem', borderRadius: '12px' }}>
+                                    {tech.icon}
                                 </div>
-                                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                                    {cat.items.map((item, i) => (
-                                        <span key={i} style={{
-                                            background: '#f1f5f9',
-                                            padding: '0.5rem 1rem',
-                                            borderRadius: '20px',
-                                            fontSize: '0.9rem',
-                                            color: '#334155',
-                                            fontWeight: 500
-                                        }}>
-                                            {item}
-                                        </span>
-                                    ))}
-                                </div>
+                                <h2 style={{ fontSize: '1.75rem', margin: 0 }}>{tech.category}</h2>
                             </div>
-                        ))}
-                    </div>
+
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+                                {tech.items.map((item) => (
+                                    <motion.span
+                                        key={item}
+                                        variants={itemVariants}
+                                        whileHover={{ scale: 1.05, backgroundColor: 'var(--electric-blue)', color: 'white' }}
+                                        style={{
+                                            padding: '0.6rem 1.25rem',
+                                            background: 'var(--bg-light)',
+                                            borderRadius: '50px',
+                                            fontWeight: 600,
+                                            color: 'var(--navy)',
+                                            fontSize: '0.95rem',
+                                            cursor: 'default',
+                                            transition: 'all 0.2s'
+                                        }}
+                                    >
+                                        {item}
+                                    </motion.span>
+                                ))}
+                            </div>
+                        </motion.div>
+                    ))}
                 </div>
-            </section>
+            </div>
         </div>
     );
 };

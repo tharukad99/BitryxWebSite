@@ -1,63 +1,155 @@
-import { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { NavLink, Link, useLocation } from 'react-router-dom';
+import { Menu, X, Terminal } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/main.css';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const location = useLocation();
 
-    const toggleMenu = () => setIsOpen(!isOpen);
+    useEffect(() => {
+        setIsOpen(false);
+        window.scrollTo(0, 0);
+    }, [location]);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 20);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const navLinks = [
+        { name: 'Home', path: '/' },
+        { name: 'Services', path: '/services' },
+        { name: 'Work', path: '/portfolio' },
+        { name: 'About', path: '/about' },
+    ];
 
     return (
-        <>
-            <nav className="navbar">
-                <div className="container navbar-content">
-                    <Link to="/" className="logo">
-                        <img src={import.meta.env.BASE_URL + "logo.png"} alt="Bitryx" style={{ height: '60px' }} />
-                    </Link>
-
-                    <div className="nav-links">
-                        <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>Home</NavLink>
-                        <NavLink to="/about" className={({ isActive }) => isActive ? "active" : ""}>About</NavLink>
-                        <NavLink to="/services" className={({ isActive }) => isActive ? "active" : ""}>Services</NavLink>
-                        <NavLink to="/technologies" className={({ isActive }) => isActive ? "active" : ""}>Technologies</NavLink>
-                        <NavLink to="/portfolio" className={({ isActive }) => isActive ? "active" : ""}>Portfolio</NavLink>
-                        <Link to="/contact" className="btn btn-primary" style={{ marginLeft: '2rem' }}>Contact Us</Link>
-                    </div>
-
-                    <button className="mobile-menu-btn" onClick={toggleMenu} aria-label="Toggle menu">
-                        {isOpen ? <X size={28} /> : <Menu size={28} />}
-                    </button>
-                </div>
-            </nav>
-
-            {/* Mobile Menu Overlay */}
-            <div className={`mobile-menu ${isOpen ? 'open' : ''}`} style={{
-                transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
+        <nav
+            style={{
                 position: 'fixed',
                 top: 0,
+                left: 0,
                 right: 0,
-                height: '100vh',
-                width: '100%',
-                background: 'var(--bg-white)',
-                zIndex: 999,
+                zIndex: 1000,
+                transition: 'all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)',
+                backgroundColor: scrolled ? 'rgba(10, 25, 47, 0.85)' : 'transparent',
+                backdropFilter: scrolled ? 'blur(10px)' : 'none',
+                height: 'var(--header-height)',
                 display: 'flex',
-                flexDirection: 'column',
                 alignItems: 'center',
-                justifyContent: 'center',
-                transition: 'transform 0.3s ease-in-out'
-            }}>
-                <button onClick={toggleMenu} style={{ position: 'absolute', top: '2rem', right: '2rem', background: 'none', border: 'none', cursor: 'pointer' }}>
-                    <X size={32} />
+                boxShadow: scrolled ? '0 10px 30px -10px rgba(2, 12, 27, 0.7)' : 'none'
+            }}
+        >
+            <div className="container" style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                {/* Brand Logo */}
+                <Link to="/" className="text-white" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontWeight: 700, fontSize: '1.25rem', letterSpacing: '-0.02em' }}>
+                    <div style={{
+                        color: 'var(--electric-blue)',
+                        border: '2px solid var(--electric-blue)',
+                        borderRadius: '4px',
+                        padding: '4px'
+                    }}>
+                        <Terminal size={24} strokeWidth={2.5} />
+                    </div>
+                    <span style={{ fontSize: '1.5rem', fontWeight: 800 }}>Bitryx<span style={{ color: 'var(--electric-blue)' }}>.</span></span>
+                </Link>
+
+                {/* Desktop Nav */}
+                <ul className="nav-desktop" style={{ display: 'none', gap: '2rem', alignItems: 'center' }}>
+                    {navLinks.map((link, idx) => (
+                        <li key={link.name}>
+                            <NavLink
+                                to={link.path}
+                                className={({ isActive }) => isActive ? "text-accent" : "text-white"}
+                                style={{
+                                    fontSize: '0.9rem',
+                                    fontFamily: 'var(--font-mono)',
+                                    fontWeight: 500,
+                                    position: 'relative'
+                                }}
+                            >
+                                <span style={{ color: 'var(--electric-blue)', marginRight: '4px' }}>0{idx + 1}.</span> {link.name}
+                            </NavLink>
+                        </li>
+                    ))}
+                    <li>
+                        <Link to="/contact" className="btn btn-primary" style={{ padding: '0.75rem 1.5rem', marginLeft: '1rem', fontSize: '0.85rem' }}>
+                            Start Project
+                        </Link>
+                    </li>
+                </ul>
+
+                {/* Mobile Trigger */}
+                <button onClick={() => setIsOpen(!isOpen)} style={{ background: 'none', border: 'none', color: 'var(--electric-blue)', cursor: 'pointer', display: 'none' }} className="mobile-trigger">
+                    {isOpen ? <X size={32} /> : <Menu size={32} />}
                 </button>
-                <Link to="/" onClick={toggleMenu} style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Home</Link>
-                <Link to="/about" onClick={toggleMenu} style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>About</Link>
-                <Link to="/services" onClick={toggleMenu} style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Services</Link>
-                <Link to="/technologies" onClick={toggleMenu} style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Technologies</Link>
-                <Link to="/portfolio" onClick={toggleMenu} style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Portfolio</Link>
-                <Link to="/contact" onClick={toggleMenu} className="btn btn-primary" style={{ marginTop: '1rem' }}>Contact Us</Link>
             </div>
-        </>
+
+            {/* Mobile Menu */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.aside
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: '100%' }}
+                        transition={{ type: 'spring', damping: 20 }}
+                        style={{
+                            position: 'fixed',
+                            top: 0,
+                            right: 0,
+                            height: '100vh',
+                            width: 'min(75vw, 400px)',
+                            background: 'var(--navy-light)',
+                            zIndex: 999,
+                            padding: '2rem',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            boxShadow: '-10px 0px 30px -15px rgba(2, 12, 27, 0.7)'
+                        }}
+                    >
+                        <nav style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem', width: '100%' }}>
+                            {navLinks.map((link, idx) => (
+                                <NavLink
+                                    key={link.name}
+                                    to={link.path}
+                                    onClick={() => setIsOpen(false)}
+                                    className={({ isActive }) => isActive ? "text-accent" : "text-white"}
+                                    style={{ fontSize: '1.2rem', fontFamily: 'var(--font-mono)' }}
+                                >
+                                    <span style={{ color: 'var(--electric-blue)', display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>0{idx + 1}.</span>
+                                    {link.name}
+                                </NavLink>
+                            ))}
+                            <Link
+                                to="/contact"
+                                onClick={() => setIsOpen(false)}
+                                className="btn btn-primary"
+                                style={{ marginTop: '2rem', width: '100%' }}
+                            >
+                                Say Hello
+                            </Link>
+                        </nav>
+                    </motion.aside>
+                )}
+            </AnimatePresence>
+
+            <style>{`
+                @media (min-width: 768px) {
+                    .nav-desktop { display: flex !important; }
+                }
+                @media (max-width: 768px) {
+                    .mobile-trigger { display: block !important; }
+                }
+            `}</style>
+        </nav>
     );
 };
 

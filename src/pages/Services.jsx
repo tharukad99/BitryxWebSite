@@ -1,75 +1,129 @@
-import React from 'react';
-import { Layers, Server, Smartphone, Globe, Cloud, Bot, Code2 } from 'lucide-react';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Code, Terminal, Layers, RefreshCw, Cloud, Server, Database, TrendingUp, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import '../styles/main.css';
+
+const servicesData = [
+    {
+        category: "Software Development",
+        desc: "Custom solutions for unique business challenges.",
+        items: [
+            { title: "Web Applications", desc: "Responsive, scalable web apps built with React & modern frameworks.", icon: <Code /> },
+            { title: "Internal Tools", desc: "Dashboards, CRM systems, and desktop applications for operations.", icon: <Terminal /> },
+            { title: "Backend & APIs", desc: "Robust REST/GraphQL APIs and microservices architecture.", icon: <Server /> }
+        ]
+    },
+    {
+        category: "Consulting & Advisory",
+        desc: "Strategic guidance to navigate technical decisions.",
+        items: [
+            { title: "Product Roadmap", desc: "Defining MVP features and long-term development strategy.", icon: <TrendingUp /> },
+            { title: "Architecture Design", desc: "Scalable system design and technology selection.", icon: <Layers /> },
+            { title: "Cost & Timeline", desc: "Accurate estimation and resource planning.", icon: <Database /> }
+        ]
+    },
+    {
+        category: "Cloud & Infrastructure",
+        desc: "Secure, scalable hosting and deployment.",
+        items: [
+            { title: "Azure Cloud Setup", desc: "Hosting, storage, and serverless function configuration.", icon: <Cloud /> },
+            { title: "DevOps & CI/CD", desc: "Automated testing and deployment pipelines.", icon: <RefreshCw /> },
+            { title: "Scaling & Monitoring", desc: "Performance optimization and real-time system alerts.", icon: <ShieldCheck /> }
+        ]
+    }
+];
 
 const Services = () => {
     return (
-        <>
-            <section className="bg-primary text-center" style={{ padding: '6rem 0 4rem', color: 'white' }}>
+        <div style={{ paddingTop: 'var(--header-height)', overflowX: 'hidden' }}>
+            {/* Header */}
+            <section className="bg-navy text-white text-center" style={{ padding: '8rem 0 6rem' }}>
                 <div className="container">
-                    <h1 style={{ color: 'white' }}>Our Services</h1>
-                    <p style={{ maxWidth: '600px', margin: '0 auto', color: '#cbd5e1' }}>
-                        Comprehensive technology solutions to drive your business forward. We cover the entire software development lifecycle.
-                    </p>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <span className="text-accent font-mono mb-4 block">What We Do</span>
+                        <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
+                            Engineering Excellence
+                        </h1>
+                        <p style={{ color: 'var(--blue-slate)', maxWidth: '600px', margin: '0 auto', fontSize: '1.2rem', lineHeight: 1.6 }}>
+                            We build high-performance products that solve complex business challenges with precision and speed.
+                        </p>
+                    </motion.div>
                 </div>
             </section>
 
-            <section className="section-padding">
+            {/* Services List */}
+            <div className="container section">
+                {servicesData.map((category, idx) => (
+                    <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.6, delay: idx * 0.1 }}
+                        style={{ marginBottom: '8rem' }}
+                    >
+                        <div style={{ marginBottom: '3rem', borderLeft: '2px solid var(--electric-blue)', paddingLeft: '1.5rem' }}>
+                            <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{category.category}</h2>
+                            <p style={{ color: 'var(--blue-slate)', fontSize: '1.1rem' }}>{category.desc}</p>
+                        </div>
+
+                        <div className="grid-3" style={{ gap: '2rem' }}>
+                            {category.items.map((item, itemIdx) => (
+                                <motion.div
+                                    key={itemIdx}
+                                    className="card-glass card-hover"
+                                    style={{
+                                        padding: '2.5rem',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        justifyContent: 'space-between',
+                                        minHeight: '280px'
+                                    }}
+                                    whileHover={{ y: -7 }}
+                                >
+                                    <div>
+                                        <div style={{
+                                            color: 'var(--electric-blue)',
+                                            marginBottom: '1.5rem',
+                                            width: '40px',
+                                            height: '40px'
+                                        }}>
+                                            {item.icon}
+                                        </div>
+                                        <h3 style={{ fontSize: '1.4rem', marginBottom: '1rem', color: 'var(--white-slate)' }}>{item.title}</h3>
+                                        <p style={{ color: 'var(--blue-slate)', fontSize: '0.95rem', lineHeight: 1.6 }}>{item.desc}</p>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+
+            {/* CTA */}
+            <section className="bg-navy section text-center" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
                 <div className="container">
-                    <div className="grid-2">
-
-                        <div className="service-card" style={{ padding: '2rem', background: '#f8fafc', borderRadius: '12px' }}>
-                            <div style={{ background: 'var(--accent)', width: '40px', height: '40px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-                                <Code2 color="white" size={24} />
-                            </div>
-                            <h3>Custom Software Development</h3>
-                            <p>We build robust, scalable software tailored to your specific business needs. Whether it's an internal tool, a CRM, or an ERP system, we ensure it fits your workflow perfectly.</p>
-                        </div>
-
-                        <div className="service-card" style={{ padding: '2rem', background: '#f8fafc', borderRadius: '12px' }}>
-                            <div style={{ background: 'var(--accent)', width: '40px', height: '40px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-                                <Globe color="white" size={24} />
-                            </div>
-                            <h3>Web Application Development</h3>
-                            <p>Modern, responsive web applications built with React, Vue, or Angular. We focus on performance, SEO, and user experience to deliver world-class web products.</p>
-                        </div>
-
-                        <div className="service-card" style={{ padding: '2rem', background: '#f8fafc', borderRadius: '12px' }}>
-                            <div style={{ background: 'var(--accent)', width: '40px', height: '40px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-                                <Smartphone color="white" size={24} />
-                            </div>
-                            <h3>Mobile App Development</h3>
-                            <p>Native and cross-platform mobile apps for iOS and Android. Using React Native or Flutter, we deliver seamless mobile experiences that users love.</p>
-                        </div>
-
-                        <div className="service-card" style={{ padding: '2rem', background: '#f8fafc', borderRadius: '12px' }}>
-                            <div style={{ background: 'var(--accent)', width: '40px', height: '40px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-                                <Cloud color="white" size={24} />
-                            </div>
-                            <h3>Cloud & DevOps Solutions</h3>
-                            <p>Scale your infrastructure with confidence. We offer cloud migration, architecture design, and DevOps implementation on AWS, Azure, and Google Cloud.</p>
-                        </div>
-
-                        <div className="service-card" style={{ padding: '2rem', background: '#f8fafc', borderRadius: '12px' }}>
-                            <div style={{ background: 'var(--accent)', width: '40px', height: '40px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-                                <Server color="white" size={24} />
-                            </div>
-                            <h3>API Development & Integration</h3>
-                            <p>Seamlessly connect your systems with robust RESTful and GraphQL APIs. We ensure secure data exchange and smooth integration with third-party services.</p>
-                        </div>
-
-                        <div className="service-card" style={{ padding: '2rem', background: '#f8fafc', borderRadius: '12px' }}>
-                            <div style={{ background: 'var(--accent)', width: '40px', height: '40px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem' }}>
-                                <Bot color="white" size={24} />
-                            </div>
-                            <h3>AI & Automation</h3>
-                            <p>Leverage the power of Artificial Intelligence to automate repetitive tasks and gain insights from your data. We implement LLM integrations and custom ml models.</p>
-                        </div>
-
-                    </div>
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                    >
+                        <h2 style={{ marginBottom: '1.5rem', fontSize: '2rem' }}>Don't see exactly what you need?</h2>
+                        <p style={{ marginBottom: '2.5rem', color: 'var(--blue-slate)', maxWidth: '600px', margin: '0 auto 2.5rem' }}>
+                            We specialize in custom software. If you have a unique challenge, we likely have the solution.
+                        </p>
+                        <Link to="/contact" className="btn btn-primary">
+                            Let's Discuss Your Needs
+                        </Link>
+                    </motion.div>
                 </div>
             </section>
-        </>
+        </div>
     );
 };
 
