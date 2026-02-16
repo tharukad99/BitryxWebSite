@@ -1,299 +1,252 @@
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Code, Database, Layout, ShieldCheck, Zap, Globe, Cpu, Server, Layers } from 'lucide-react';
+import { ArrowUpRight, TrendingUp, Settings, BarChart2, CheckCircle, Zap, Shield, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import '../styles/main.css';
 
 const Home = () => {
     const scrollRef = useRef(null);
     const { scrollYProgress } = useScroll({ target: scrollRef, offset: ["start start", "end start"] });
-    const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+    const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
-    // Infinite Marquee Clients
-    const clients = ["Acme", "Stripe", "Uber", "Vercel", "Linear", "Supabase", "Retool", "Figma", "Airbnb", "Spotify"];
-
-    const variants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: { opacity: 1, y: 0, transition: { type: "tween", duration: 0.6 } }
-    };
+    const clients = ["Microsoft", "Oracle", "SAP", "Salesforce", "Google Cloud", "Adobe"];
 
     return (
         <div style={{ overflowX: 'hidden' }}>
-            {/* HEROL: Deep Tech Grid Atmosphere */}
+            {/* HERO: Clean, White, Professional */}
             <section
                 ref={scrollRef}
-                className="bg-grid"
+                className="hero-bg"
                 style={{
                     position: 'relative',
                     minHeight: '100vh',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    background: 'radial-gradient(ellipse at center, #0B192E 0%, #020c1b 100%)',
-                    overflow: 'hidden'
+                    padding: '8rem 0 4rem'
                 }}
             >
-                {/* Floating Elements */}
-                <motion.div
-                    style={{
-                        position: 'absolute',
-                        top: '20%',
-                        right: '15%',
-                        width: '300px',
-                        height: '300px',
-                        background: 'radial-gradient(circle, rgba(100,255,218,0.15) 0%, transparent 60%)',
-                        filter: 'blur(80px)',
-                        zIndex: 0
-                    }}
-                    animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0.8, 0.5] }}
-                    transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-                />
-
-                <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '4rem' }}>
-                    <div className="grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
-
-                        {/* Left: Text Content */}
+                <div className="container">
+                    <div className="grid-2" style={{ alignItems: 'center' }}>
+                        {/* Text Content */}
                         <motion.div
-                            initial="hidden"
-                            animate="visible"
-                            variants={{
-                                visible: { transition: { staggerChildren: 0.1 } }
-                            }}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.8 }}
                         >
-                            <motion.span variants={variants} style={{
-                                color: 'var(--electric-blue)',
-                                fontFamily: 'var(--font-mono)',
-                                fontSize: '1rem',
-                                display: 'block',
-                                marginBottom: '1.5rem'
+                            <span style={{
+                                display: 'inline-block',
+                                padding: '0.5rem 1rem',
+                                background: '#eff6ff',
+                                color: 'var(--accent)',
+                                borderRadius: '50px',
+                                fontSize: '0.875rem',
+                                fontWeight: 600,
+                                marginBottom: '1.5rem',
+                                border: '1px solid #dbeafe'
                             }}>
-                                Hi, we are Bitryx.
-                            </motion.span>
+                                Enterprise Software Solutions
+                            </span>
 
-                            <motion.h1 variants={variants} style={{
-                                fontSize: 'clamp(3rem, 5vw, 4.5rem)',
+                            <h1 style={{
+                                fontSize: 'clamp(2.5rem, 5vw, 4rem)',
                                 marginBottom: '1.5rem',
                                 fontWeight: 800,
                                 lineHeight: 1.1,
-                                letterSpacing: '-0.03em'
+                                color: 'var(--primary)'
                             }}>
-                                Building the <span className="text-gradient">digital future</span> for ambitious brands.
-                            </motion.h1>
+                                Empowering Business <br />
+                                <span className="text-gradient">Growth Through IT.</span>
+                            </h1>
 
-                            <motion.p variants={variants} style={{
-                                fontSize: '1.15rem',
-                                color: 'var(--blue-slate)',
+                            <p style={{
+                                fontSize: '1.2rem',
+                                color: 'var(--primary-light)',
                                 maxWidth: '540px',
                                 marginBottom: '2.5rem',
-                                lineHeight: 1.7
+                                lineHeight: 1.6
                             }}>
-                                We are a software engineering studio specializing in high-performance web applications, cloud architecture, and scalable digital products.
-                            </motion.p>
+                                We simplify complexity. Our expert team builds scalable software that makes your work easier, your processes faster, and your business stronger.
+                            </p>
 
-                            <motion.div variants={variants} style={{ display: 'flex', gap: '1.5rem' }}>
-                                <Link to="/contact" className="btn btn-primary">
-                                    Start a Project
+                            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                                <Link to="/contact" className="btn btn-primary" style={{ padding: '1rem 2rem' }}>
+                                    Start Your Project
                                 </Link>
-                                <Link to="/portfolio" className="btn btn-secondary">
-                                    View Our Work
+                                <Link to="/services" className="btn btn-secondary" style={{ padding: '1rem 2rem' }}>
+                                    View Services
                                 </Link>
-                            </motion.div>
+                            </div>
+
+                            <div style={{ marginTop: '3rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                                <div style={{ display: 'flex' }}>
+                                    {[1, 2, 3].map(i => (
+                                        <div key={i} style={{
+                                            width: '40px', height: '40px', borderRadius: '50%', background: '#cbd5e1',
+                                            marginLeft: i > 1 ? '-15px' : 0, border: '2px solid white'
+                                        }}></div>
+                                    ))}
+                                </div>
+                                <div>
+                                    <p style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--primary)' }}>Trusted Partner</p>
+                                    <p style={{ fontSize: '0.8rem', color: 'var(--primary-light)' }}>Helping businesses scale since 2024</p>
+                                </div>
+                            </div>
                         </motion.div>
 
-                        {/* Right: Abstract 3D Representation */}
+                        {/* Visual: Abstract Growth/Dashboard - Clean & Corporate */}
                         <motion.div
-                            initial={{ opacity: 0, x: 50 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8, delay: 0.4 }}
-                            style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            style={{ position: 'relative' }}
                         >
-                            <div className="card-glass" style={{
-                                padding: '2rem',
-                                width: '100%',
-                                maxWidth: '500px',
+                            {/* Main Card */}
+                            <div className="card-clean" style={{
+                                padding: '2.5rem',
+                                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.1)',
                                 position: 'relative',
-                                transform: 'rotateY(-5deg) rotateX(5deg)',
-                                transformStyle: 'preserve-3d',
-                                perspective: '1000px'
+                                background: 'white',
+                                zIndex: 2
                             }}>
-                                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem' }}>
-                                    <div style={{ display: 'flex', gap: '0.5rem' }}>
-                                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ff5f56' }}></div>
-                                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ffbd2e' }}></div>
-                                        <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#27c93f' }}></div>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+                                    <div>
+                                        <h3 style={{ fontSize: '1.2rem', marginBottom: '0.25rem' }}>System Performance</h3>
+                                        <p style={{ fontSize: '0.875rem', color: '#64748b' }}>Real-time analytics</p>
                                     </div>
-                                    <span className="font-mono" style={{ fontSize: '0.8rem', color: '#8892b0' }}>server.ts</span>
+                                    <div style={{ background: '#ecfdf5', color: '#059669', padding: '0.25rem 0.75rem', borderRadius: '20px', fontSize: '0.875rem', fontWeight: 600 }}>
+                                        +24% Growth
+                                    </div>
                                 </div>
-                                <code className="font-mono" style={{ fontSize: '0.85rem', lineHeight: 1.7, color: '#a8b2d1' }}>
-                                    <span style={{ color: '#c792ea' }}>const</span> system = <span style={{ color: '#82aaff' }}>require</span>(<span style={{ color: '#c3e88d' }}>'bitryx-core'</span>);<br /><br />
-                                    <span style={{ color: '#c792ea' }}>async function</span> <span style={{ color: '#82aaff' }}>deploy</span>() {'{'}<br />
-                                    &nbsp;&nbsp;<span style={{ color: '#f07178' }}>await</span> system.<span style={{ color: '#82aaff' }}>optimize</span>({'{'}<br />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;performance: <span style={{ color: '#f78c6c' }}>100</span>,<br />
-                                    &nbsp;&nbsp;&nbsp;&nbsp;security: <span style={{ color: '#c3e88d' }}>'enterprise'</span><br />
-                                    &nbsp;&nbsp;{'}'});<br />
-                                    &nbsp;&nbsp;<span style={{ color: '#546e7a' }}>// Ready for scale</span><br />
-                                    &nbsp;&nbsp;<span style={{ color: '#82aaff' }}>return</span> <span style={{ color: '#c3e88d' }}>true</span>;<br />
-                                    {'}'}
-                                </code>
-                                {/* Glowing orb behind code */}
-                                <div style={{
-                                    position: 'absolute', bottom: '-20%', right: '-20%',
-                                    width: '200px', height: '200px', background: 'radial-gradient(circle, var(--electric-blue) 0%, transparent 70%)',
-                                    opacity: 0.15, borderRadius: '50%', filter: 'blur(40px)', pointerEvents: 'none'
-                                }}></div>
+
+                                {/* Mock Chart Bars */}
+                                <div style={{ display: 'flex', alignItems: 'flex-end', gap: '1rem', height: '150px' }}>
+                                    {[40, 65, 45, 80, 55, 90].map((h, i) => (
+                                        <div key={i} style={{
+                                            flex: 1,
+                                            height: `${h}%`,
+                                            background: i === 5 ? 'var(--accent)' : '#e2e8f0',
+                                            borderRadius: '4px'
+                                        }}></div>
+                                    ))}
+                                </div>
                             </div>
+
+                            {/* Floating Card 1: Ease of Use */}
+                            <motion.div
+                                animate={{ y: [0, -10, 0] }}
+                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                                className="card-clean"
+                                style={{
+                                    position: 'absolute',
+                                    top: '-2rem',
+                                    right: '-2rem',
+                                    padding: '1rem 1.5rem',
+                                    zIndex: 3,
+                                    width: '200px'
+                                }}
+                            >
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                                    <div style={{ background: '#ecfdf5', padding: '0.5rem', borderRadius: '8px' }}>
+                                        <CheckCircle size={20} color="#059669" />
+                                    </div>
+                                    <div>
+                                        <p style={{ fontWeight: 700, fontSize: '0.9rem' }}>Efficiency</p>
+                                        <p style={{ fontSize: '0.75rem', color: '#64748b' }}>Work simplified</p>
+                                    </div>
+                                </div>
+                            </motion.div>
+
+                            {/* Floating Card 2: Support */}
+                            <motion.div
+                                animate={{ y: [0, 10, 0] }}
+                                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                                className="card-clean"
+                                style={{
+                                    position: 'absolute',
+                                    bottom: '-2rem',
+                                    left: '-2rem',
+                                    padding: '1rem 1.5rem',
+                                    zIndex: 3,
+                                    width: '220px'
+                                }}
+                            >
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                                    <div style={{ background: '#eff6ff', padding: '0.5rem', borderRadius: '8px' }}>
+                                        <Users size={20} color="var(--accent)" />
+                                    </div>
+                                    <div>
+                                        <p style={{ fontWeight: 700, fontSize: '0.9rem' }}>Dedicated Support</p>
+                                        <p style={{ fontSize: '0.75rem', color: '#64748b' }}>24/7 Expert Team</p>
+                                    </div>
+                                </div>
+                            </motion.div>
                         </motion.div>
                     </div>
                 </div>
             </section>
 
-            {/* MARQUEE: Social Proof */}
-            <div style={{ background: '#0a192f', padding: '2rem 0', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                <div className="container marquee-container">
-                    <div className="marquee-track">
-                        {[...clients, ...clients].map((client, i) => (
-                            <span key={i} style={{
-                                display: 'inline-block',
-                                margin: '0 3rem',
-                                fontSize: '1.5rem',
-                                fontWeight: 600,
-                                color: '#8892b0',
-                                opacity: 0.5,
-                                fontFamily: 'var(--font-heading)'
-                            }}>
-                                {client}
-                            </span>
+            {/* TRUSTED BY STRIP */}
+            <div style={{ background: 'white', borderBottom: '1px solid var(--border)', padding: '2rem 0' }}>
+                <div className="container">
+                    <p className="text-center" style={{ fontSize: '0.875rem', color: '#64748b', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 600 }}>Supporting Industry Leaders</p>
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '4rem', flexWrap: 'wrap', alignItems: 'center', opacity: 0.5 }}>
+                        {clients.map(c => (
+                            <span key={c} style={{ fontSize: '1.25rem', fontWeight: 700, color: '#94a3b8' }}>{c}</span>
                         ))}
                     </div>
                 </div>
             </div>
 
-            {/* BENTO GRID: Features */}
-            <section className="section bg-navy">
+            {/* SERVICES: Professional Grid */}
+            <section className="section bg-light">
                 <div className="container">
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={variants}
-                        className="text-center"
-                        style={{ marginBottom: '4rem' }}
-                    >
-                        <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Engineered for Growth</h2>
-                        <p style={{ color: 'var(--blue-slate)', maxWidth: '600px', margin: '0 auto' }}>
-                            We don't just write code. We architect solutions that scale with your business demands.
+                    <div className="text-center" style={{ marginBottom: '4rem' }}>
+                        <span style={{ color: 'var(--accent)', fontWeight: 600, fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>What We Do</span>
+                        <h2 style={{ fontSize: '2.5rem', marginTop: '0.5rem', marginBottom: '1rem' }}>Solutions That Drive Results</h2>
+                        <p style={{ color: 'var(--primary-light)', maxWidth: '600px', margin: '0 auto' }}>
+                            From custom development to cloud infrastructure, we handle the technology so you can focus on your business.
                         </p>
-                    </motion.div>
+                    </div>
 
-                    <div className="bento-grid" style={{
-                        display: 'grid',
-                        gap: '1.5rem',
-                        gridTemplateColumns: 'repeat(1, 1fr)', // Mobile first
-                        // Desktop override handled by CSS @media but inline style might conflict if not careful.
-                        // Relying on CSS class 'bento-grid' for actual layout structure.
-                    }}>
-                        {/* Large Card 1 */}
-                        <motion.div
-                            className="card-glass card-hover"
-                            style={{ padding: '2.5rem', gridColumn: 'span 2' }} // Span 2 on desktop
-                            whileHover={{ y: -5 }}
-                        >
-                            <div style={{ color: 'var(--electric-blue)', marginBottom: '1.5rem' }}><Globe size={32} /></div>
-                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Global Scalability</h3>
-                            <p style={{ color: 'var(--blue-slate)' }}>
-                                Our applications are built to handle traffic from anywhere. We use Edge computing and CDN strategies to ensure low latency and high availability across the globe.
-                            </p>
-                        </motion.div>
-
-                        {/* Standard Card 2 */}
-                        <motion.div className="card-glass card-hover" style={{ padding: '2.5rem' }} whileHover={{ y: -5 }}>
-                            <div style={{ color: 'var(--electric-blue)', marginBottom: '1.5rem' }}><ShieldCheck size={32} /></div>
-                            <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>Enterprise Security</h3>
-                            <p style={{ color: 'var(--blue-slate)', fontSize: '0.95rem' }}>Bank-grade encryption and compliance standards built-in from day one.</p>
-                        </motion.div>
-
-                        {/* Standard Card 3 */}
-                        <motion.div className="card-glass card-hover" style={{ padding: '2.5rem' }} whileHover={{ y: -5 }}>
-                            <div style={{ color: 'var(--electric-blue)', marginBottom: '1.5rem' }}><Zap size={32} /></div>
-                            <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>High Performance</h3>
-                            <p style={{ color: 'var(--blue-slate)', fontSize: '0.95rem' }}>Core Web Vitals optimized. Fast loads = higher conversion.</p>
-                        </motion.div>
-
-                        {/* Large Card 4 */}
-                        <motion.div
-                            className="card-glass card-hover"
-                            style={{ padding: '2.5rem', gridColumn: 'span 2' }}
-                            whileHover={{ y: -5 }}
-                        >
-                            <div style={{ color: 'var(--electric-blue)', marginBottom: '1.5rem' }}><Cpu size={32} /></div>
-                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>AI Integration Ready</h3>
-                            <p style={{ color: 'var(--blue-slate)' }}>
-                                Prepare for the future. Our architectures are designed to easily integrate with LLMs, vector databases, and machine learning pipelines when you're ready.
-                            </p>
-                        </motion.div>
+                    <div className="grid-3" style={{ gap: '2rem' }}>
+                        {[
+                            { icon: <TrendingUp size={32} />, title: "Business Growth", desc: "Digital tools designed to increase revenue and customer engagement." },
+                            { icon: <Settings size={32} />, title: "Process Automation", desc: "Automate repetitive tasks to save time and reduce operational costs." },
+                            { icon: <Zap size={32} />, title: "Custom Software", desc: "Tailor-made applications that fit your unique business workflows." },
+                            { icon: <Shield size={32} />, title: "Secure Cloud", desc: "Enterprise-grade security and scalable infrastructure." },
+                            { icon: <Users size={32} />, title: "IT Consulting", desc: "Strategic advice to help you make the right technology decisions." },
+                            { icon: <BarChart2 size={32} />, title: "Data Analytics", desc: "Turn data into actionable insights for better decision making." }
+                        ].map((s, i) => (
+                            <motion.div
+                                key={i}
+                                className="card-clean card-hover"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: i * 0.1 }}
+                                style={{ padding: '2.5rem' }}
+                            >
+                                <div style={{ background: 'var(--bg-light)', display: 'inline-flex', padding: '1rem', borderRadius: '12px', color: 'var(--accent)', marginBottom: '1.5rem' }}>
+                                    {s.icon}
+                                </div>
+                                <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>{s.title}</h3>
+                                <p style={{ color: '#64748b', fontSize: '1rem' }}>{s.desc}</p>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </section>
 
-            {/* PROCESS TIMELINE: Vertical Step */}
-            <section className="section" style={{ background: '#0a192f' }}>
+            {/* CTA: Clean & Direct */}
+            <section className="section" style={{ background: 'var(--primary)', color: 'white', textAlign: 'center' }}>
                 <div className="container">
-                    <div className="grid-2" style={{ alignItems: 'flex-start' }}>
-                        <div style={{ position: 'sticky', top: '120px' }}>
-                            <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>How We Work</h2>
-                            <p style={{ color: 'var(--blue-slate)', fontSize: '1.1rem', marginBottom: '2rem' }}>
-                                A transparent, agile process designed to minimize risk and maximize value delivery.
-                            </p>
-                            <Link to="/services" className="btn btn-secondary">Explore Services <ArrowRight size={18} style={{ marginLeft: '10px' }} /></Link>
-                        </div>
-
-                        <div style={{ position: 'relative', borderLeft: '2px solid rgba(255,255,255,0.05)', paddingLeft: '3rem' }}>
-                            {[
-                                { step: "01", title: "Discovery & Strategy", desc: "We deep dive into your business goals, user needs, and technical constraints to build a solid roadmap." },
-                                { step: "02", title: "Design & Prototype", desc: "Creating intuitive UI/UX and validating concepts before writing a single line of code." },
-                                { step: "03", title: "Agile Development", desc: "Iterative sprints with regular demos. You see progress every two weeks, not just at the end." },
-                                { step: "04", title: "Launch & Scale", desc: "Seamless deployment with automated testing. We monitor performance and help you grow." }
-                            ].map((item, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true, margin: "-50px" }}
-                                    transition={{ duration: 0.5, delay: idx * 0.2 }}
-                                    style={{ marginBottom: '4rem', position: 'relative' }}
-                                >
-                                    <span style={{
-                                        position: 'absolute', left: '-3.65rem', top: '0',
-                                        width: '20px', height: '20px', background: 'var(--electric-blue)',
-                                        borderRadius: '50%', border: '4px solid #0a192f'
-                                    }}></span>
-                                    <span className="font-mono text-accent" style={{ fontSize: '0.9rem', marginBottom: '0.5rem', display: 'block' }}>{item.step}</span>
-                                    <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>{item.title}</h3>
-                                    <p style={{ color: 'var(--blue-slate)' }}>{item.desc}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* CTA SECTION */}
-            <section className="section text-center" style={{ padding: '8rem 0' }}>
-                <div className="container">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                    >
-                        <p className="text-accent font-mono" style={{ marginBottom: '1.5rem' }}>What's Next?</p>
-                        <h2 style={{ fontSize: '3rem', marginBottom: '2rem', maxWidth: '800px', margin: '0 auto 2rem' }}>Ready to build something extraordinary?</h2>
-                        <p style={{ color: 'var(--blue-slate)', maxWidth: '600px', margin: '0 auto 3rem', fontSize: '1.1rem' }}>
-                            Whether you need a full product team or a technical consultation, our inbox is always open.
-                        </p>
-                        <Link to="/contact" className="btn btn-primary" style={{ padding: '1.25rem 3rem', fontSize: '1rem' }}>
-                            Schedule Consultation
-                        </Link>
-                    </motion.div>
+                    <h2 style={{ color: 'white', fontSize: '2.5rem', marginBottom: '1.5rem' }}>Ready to simplify your work?</h2>
+                    <p style={{ color: '#cbd5e1', maxWidth: '600px', margin: '0 auto 3rem', fontSize: '1.2rem' }}>
+                        Partner with a team that cares about your success. Let's build something great together.
+                    </p>
+                    <Link to="/contact" className="btn" style={{ background: 'white', color: 'var(--primary)', padding: '1rem 3rem', fontWeight: 600 }}>
+                        Get a Free Consultation
+                    </Link>
                 </div>
             </section>
         </div>

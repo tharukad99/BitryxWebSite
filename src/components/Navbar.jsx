@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, Terminal } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/main.css';
 
@@ -15,9 +15,7 @@ const Navbar = () => {
     }, [location]);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
-        };
+        const handleScroll = () => setScrolled(window.scrollY > 20);
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
@@ -25,8 +23,8 @@ const Navbar = () => {
     const navLinks = [
         { name: 'Home', path: '/' },
         { name: 'Services', path: '/services' },
-        { name: 'Work', path: '/portfolio' },
         { name: 'About', path: '/about' },
+        { name: 'Portfolio', path: '/portfolio' },
     ];
 
     return (
@@ -37,107 +35,113 @@ const Navbar = () => {
                 left: 0,
                 right: 0,
                 zIndex: 1000,
-                transition: 'all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1)',
-                backgroundColor: scrolled ? 'rgba(10, 25, 47, 0.85)' : 'transparent',
+                transition: 'all 0.3s ease',
+                backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'transparent',
                 backdropFilter: scrolled ? 'blur(10px)' : 'none',
                 height: 'var(--header-height)',
                 display: 'flex',
                 alignItems: 'center',
-                boxShadow: scrolled ? '0 10px 30px -10px rgba(2, 12, 27, 0.7)' : 'none'
+                boxShadow: scrolled ? '0 4px 6px -1px rgba(0, 0, 0, 0.05)' : 'none'
             }}
         >
             <div className="container" style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                {/* Brand Logo */}
-                <Link to="/" className="text-white" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontWeight: 700, fontSize: '1.25rem', letterSpacing: '-0.02em' }}>
+                {/* Brand Logo - Clean Text */}
+                <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontWeight: 700, fontSize: '1.5rem', letterSpacing: '-0.03em', color: 'var(--primary)' }}>
                     <div style={{
-                        color: 'var(--electric-blue)',
-                        border: '2px solid var(--electric-blue)',
-                        borderRadius: '4px',
-                        padding: '4px'
+                        background: 'var(--accent)',
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: '6px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
                     }}>
-                        <Terminal size={24} strokeWidth={2.5} />
+                        <span style={{ color: 'white', fontWeight: 800, fontSize: '1.1rem' }}>B</span>
                     </div>
-                    <span style={{ fontSize: '1.5rem', fontWeight: 800 }}>Bitryx<span style={{ color: 'var(--electric-blue)' }}>.</span></span>
+                    <span>Bitryx<span style={{ color: 'var(--accent)' }}>.</span></span>
                 </Link>
 
-                {/* Desktop Nav */}
-                <ul className="nav-desktop" style={{ display: 'none', gap: '2rem', alignItems: 'center' }}>
-                    {navLinks.map((link, idx) => (
-                        <li key={link.name}>
-                            <NavLink
-                                to={link.path}
-                                className={({ isActive }) => isActive ? "text-accent" : "text-white"}
-                                style={{
-                                    fontSize: '0.9rem',
-                                    fontFamily: 'var(--font-mono)',
-                                    fontWeight: 500,
-                                    position: 'relative'
-                                }}
-                            >
-                                <span style={{ color: 'var(--electric-blue)', marginRight: '4px' }}>0{idx + 1}.</span> {link.name}
-                            </NavLink>
-                        </li>
+                {/* Desktop Nav - Clean & Simple */}
+                <div style={{ display: 'none', gap: '2.5rem', alignItems: 'center' }} className="nav-desktop">
+                    {navLinks.map((link) => (
+                        <NavLink
+                            key={link.name}
+                            to={link.path}
+                            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+                            style={{
+                                textDecoration: 'none',
+                                fontWeight: 500,
+                                fontSize: '0.95rem',
+                                color: 'var(--primary)',
+                                transition: 'color 0.2s ease'
+                            }}
+                        >
+                            {link.name}
+                        </NavLink>
                     ))}
-                    <li>
-                        <Link to="/contact" className="btn btn-primary" style={{ padding: '0.75rem 1.5rem', marginLeft: '1rem', fontSize: '0.85rem' }}>
-                            Start Project
-                        </Link>
-                    </li>
-                </ul>
+                    <Link to="/contact" className="btn btn-primary" style={{ padding: '0.6rem 1.25rem', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        Get Started <ArrowUpRight size={16} />
+                    </Link>
+                </div>
 
-                {/* Mobile Trigger */}
-                <button onClick={() => setIsOpen(!isOpen)} style={{ background: 'none', border: 'none', color: 'var(--electric-blue)', cursor: 'pointer', display: 'none' }} className="mobile-trigger">
-                    {isOpen ? <X size={32} /> : <Menu size={32} />}
+                {/* Mobile Trigger - Clean */}
+                <button
+                    onClick={() => setIsOpen(!isOpen)}
+                    style={{ background: 'none', border: 'none', color: 'var(--primary)', cursor: 'pointer', display: 'none' }}
+                    className="mobile-trigger"
+                >
+                    {isOpen ? <X size={28} /> : <Menu size={28} />}
                 </button>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu - Full Screen White */}
             <AnimatePresence>
                 {isOpen && (
-                    <motion.aside
-                        initial={{ x: '100%' }}
-                        animate={{ x: 0 }}
-                        exit={{ x: '100%' }}
-                        transition={{ type: 'spring', damping: 20 }}
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.2 }}
                         style={{
                             position: 'fixed',
-                            top: 0,
+                            top: 'var(--header-height)',
+                            left: 0,
                             right: 0,
-                            height: '100vh',
-                            width: 'min(75vw, 400px)',
-                            background: 'var(--navy-light)',
+                            bottom: 0,
+                            background: 'rgba(255,255,255,0.98)',
                             zIndex: 999,
                             padding: '2rem',
                             display: 'flex',
                             flexDirection: 'column',
-                            justifyContent: 'center',
                             alignItems: 'center',
-                            boxShadow: '-10px 0px 30px -15px rgba(2, 12, 27, 0.7)'
+                            gap: '2rem',
+                            paddingTop: '4rem'
                         }}
                     >
-                        <nav style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem', width: '100%' }}>
-                            {navLinks.map((link, idx) => (
-                                <NavLink
-                                    key={link.name}
-                                    to={link.path}
-                                    onClick={() => setIsOpen(false)}
-                                    className={({ isActive }) => isActive ? "text-accent" : "text-white"}
-                                    style={{ fontSize: '1.2rem', fontFamily: 'var(--font-mono)' }}
-                                >
-                                    <span style={{ color: 'var(--electric-blue)', display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>0{idx + 1}.</span>
-                                    {link.name}
-                                </NavLink>
-                            ))}
-                            <Link
-                                to="/contact"
+                        {navLinks.map((link) => (
+                            <NavLink
+                                key={link.name}
+                                to={link.path}
                                 onClick={() => setIsOpen(false)}
-                                className="btn btn-primary"
-                                style={{ marginTop: '2rem', width: '100%' }}
+                                style={{
+                                    fontSize: '1.5rem',
+                                    fontWeight: 600,
+                                    color: 'var(--primary)',
+                                    textDecoration: 'none'
+                                }}
                             >
-                                Say Hello
-                            </Link>
-                        </nav>
-                    </motion.aside>
+                                {link.name}
+                            </NavLink>
+                        ))}
+                        <Link
+                            to="/contact"
+                            onClick={() => setIsOpen(false)}
+                            className="btn btn-primary"
+                            style={{ width: '80%', padding: '1rem', marginTop: '2rem' }}
+                        >
+                            Start Your Project
+                        </Link>
+                    </motion.div>
                 )}
             </AnimatePresence>
 
