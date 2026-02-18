@@ -33,7 +33,7 @@ const Navbar = () => {
         <nav
             className={`navbar ${scrolled ? 'scrolled' : ''}`}
             style={{
-                background: scrolled ? 'rgba(2, 6, 23, 0.8)' : 'transparent',
+                background: scrolled ? 'rgba(15, 23, 42, 0.8)' : 'transparent',
                 backdropFilter: scrolled ? 'blur(10px)' : 'none',
                 borderBottom: scrolled ? '1px solid var(--border)' : 'none',
                 transition: 'all 0.3s ease'

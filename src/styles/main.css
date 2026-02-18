@@ -1,39 +1,39 @@
 :root {
-  /* Premium Dark AI Palette */
-  --navy-dark: #020617;
-  /* Deepest Background (Slate 950) */
-  --navy-primary: #0F172A;
-  /* Main Background (Slate 900) */
-  --navy-light: #1E293B;
-  /* Card Background (Slate 800) */
+  /* Premium Dark AI Palette (Lighter Version) */
+  --navy-dark: #0F172A;
+  /* Main Background (was Slate 950, now Slate 900) */
+  --navy-primary: #1E293B;
+  /* Secondary Background (was Slate 900, now Slate 800) */
+  --navy-light: #334155;
+  /* Card Background (was Slate 800, now Slate 700) */
 
   --blue-accent: #38BDF8;
   /* Sky 400 - Bright Blue */
   --cyan-accent: #22D3EE;
   /* Cyan 400 - Bright Cyan */
 
-  --bg-white: #020617;
+  --bg-white: #0F172A;
   /* Replaces white with dark background */
-  --bg-light: #0F172A;
-  /* Replaces light bg with slightly lighter dark */
+  --bg-light: #1E293B;
+  /* Replaces light bg with lighter dark */
   --bg-card: #1E293B;
-  /* Card background */
+  /* Card background - keeping at 800 for contrast against 900 body */
 
   --text-primary: #F8FAFC;
   /* Slate 50 - Main Text */
-  --text-secondary: #94A3B8;
-  /* Slate 400 - Secondary Text */
+  --text-secondary: #CBD5E1;
+  /* Slate 300 - Secondary Text (Lighter for better contrast) */
   --text-white: #FFFFFF;
 
-  --border: #334155;
-  /* Slate 700 - Borders */
+  --border: #475569;
+  /* Slate 600 - Lighter Borders */
 
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-  --shadow-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
 
-  --gradient-main: linear-gradient(135deg, #020617 0%, #0F172A 100%);
+  --gradient-main: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
   --gradient-accent: linear-gradient(90deg, #38BDF8 0%, #22D3EE 100%);
 
   /* Typography */
