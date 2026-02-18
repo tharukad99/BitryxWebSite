@@ -33,16 +33,16 @@ const Technologies = () => {
 
     return (
         <div style={{ paddingTop: 'var(--header-height)' }}>
-            <section className="bg-navy text-white text-center" style={{ padding: '6rem 0 4rem', background: 'var(--navy)' }}>
-                <div className="container">
+            <section style={{ padding: '6rem 0 4rem', background: 'var(--navy-dark)', color: 'var(--text-primary)' }}>
+                <div className="container text-center">
                     <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        style={{ color: 'white', marginBottom: '1rem', fontSize: '3rem' }}
+                        style={{ color: 'var(--text-primary)', marginBottom: '1rem', fontSize: '3rem' }}
                     >
                         Technology Stack
                     </motion.h1>
-                    <p style={{ color: 'var(--text-light)', maxWidth: '600px', margin: '0 auto', fontSize: '1.2rem' }}>
+                    <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto', fontSize: '1.2rem' }}>
                         We choose the right tools for the job, favoring scalability and maintainability.
                     </p>
                 </div>
@@ -57,14 +57,14 @@ const Technologies = () => {
                             whileInView="visible"
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.1 }}
-                            className="card"
+                            className="card-service"
                             style={{ padding: '2.5rem' }}
                         >
                             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-                                <div style={{ color: 'var(--electric-blue)', background: 'var(--bg-light)', padding: '0.75rem', borderRadius: '12px' }}>
+                                <div style={{ color: 'var(--blue-accent)', background: 'rgba(56, 189, 248, 0.1)', padding: '0.75rem', borderRadius: '12px' }}>
                                     {tech.icon}
                                 </div>
-                                <h2 style={{ fontSize: '1.75rem', margin: 0 }}>{tech.category}</h2>
+                                <h2 style={{ fontSize: '1.75rem', margin: 0, color: 'var(--text-primary)' }}>{tech.category}</h2>
                             </div>
 
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
@@ -72,16 +72,17 @@ const Technologies = () => {
                                     <motion.span
                                         key={item}
                                         variants={itemVariants}
-                                        whileHover={{ scale: 1.05, backgroundColor: 'var(--electric-blue)', color: 'white' }}
+                                        whileHover={{ scale: 1.05, backgroundColor: 'var(--blue-accent)', color: 'white' }}
                                         style={{
                                             padding: '0.6rem 1.25rem',
                                             background: 'var(--bg-light)',
                                             borderRadius: '50px',
                                             fontWeight: 600,
-                                            color: 'var(--navy)',
+                                            color: 'var(--text-primary)',
                                             fontSize: '0.95rem',
                                             cursor: 'default',
-                                            transition: 'all 0.2s'
+                                            transition: 'all 0.2s',
+                                            border: '1px solid var(--border)'
                                         }}
                                     >
                                         {item}
@@ -97,3 +98,4 @@ const Technologies = () => {
 };
 
 export default Technologies;
+

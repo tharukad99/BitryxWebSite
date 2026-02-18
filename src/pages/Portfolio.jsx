@@ -34,18 +34,18 @@ const Portfolio = () => {
 
     return (
         <div style={{ paddingTop: 'var(--header-height)' }}>
-            <section className="bg-grid text-white text-center" style={{ padding: '8rem 0 6rem' }}>
-                <div className="container">
+            <section style={{ padding: '8rem 0 6rem', background: 'var(--navy-dark)', color: 'var(--text-primary)' }}>
+                <div className="container text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem', fontWeight: 800 }}>
-                            <span className="text-accent font-mono" style={{ display: 'block', fontSize: '1rem', fontWeight: 400, marginBottom: '0.5rem' }}>Our Work</span>
+                        <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem', fontWeight: 800, color: 'var(--text-primary)' }}>
+                            <span className="text-accent font-mono" style={{ display: 'block', fontSize: '1rem', fontWeight: 400, marginBottom: '0.5rem', color: 'var(--blue-accent)' }}>Our Work</span>
                             Selected Projects
                         </h1>
-                        <p style={{ color: 'var(--blue-slate)', maxWidth: '600px', margin: '0 auto', fontSize: '1.15rem' }}>
+                        <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto', fontSize: '1.15rem' }}>
                             We solve complex problems with clean, maintainable code.
                         </p>
                     </motion.div>
@@ -61,7 +61,7 @@ const Portfolio = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.5, delay: idx * 0.1 }}
-                            className="card-glass card-hover"
+                            className="card-service"
                             style={{
                                 padding: '3rem',
                                 display: 'flex',
@@ -76,14 +76,14 @@ const Portfolio = () => {
                                 opacity: 0.2, transform: 'scale(1.5)', pointerEvents: 'none'
                             }}>
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-                                    <circle cx="50" cy="50" r="40" stroke="var(--electric-blue)" strokeWidth="2" />
-                                    <path d="M50 10 L50 90 M10 50 L90 50" stroke="var(--electric-blue)" strokeWidth="2" />
+                                    <circle cx="50" cy="50" r="40" stroke="var(--blue-accent)" strokeWidth="2" />
+                                    <path d="M50 10 L50 90 M10 50 L90 50" stroke="var(--blue-accent)" strokeWidth="2" />
                                 </svg>
                             </div>
 
                             <span style={{
                                 fontFamily: 'var(--font-mono)',
-                                color: 'var(--electric-blue)',
+                                color: 'var(--blue-accent)',
                                 fontSize: '0.85rem',
                                 marginBottom: '1rem',
                                 letterSpacing: '0.05em'
@@ -91,23 +91,23 @@ const Portfolio = () => {
                                 {project.category}
                             </span>
 
-                            <h3 style={{ fontSize: '1.75rem', marginBottom: '1.5rem', fontWeight: 600, color: 'var(--white-slate)' }}>{project.title}</h3>
+                            <h3 style={{ fontSize: '1.75rem', marginBottom: '1.5rem', fontWeight: 600, color: 'var(--text-primary)' }}>{project.title}</h3>
 
                             <div style={{ flex: 1, marginBottom: '2rem' }}>
                                 <div style={{ marginBottom: '1rem' }}>
-                                    <strong style={{ color: 'var(--white-slate)', display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Challenge:</strong>
-                                    <p style={{ color: 'var(--blue-slate)', fontSize: '0.95rem' }}>{project.problem}</p>
+                                    <strong style={{ color: 'var(--text-primary)', display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Challenge:</strong>
+                                    <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>{project.problem}</p>
                                 </div>
                                 <div>
-                                    <strong style={{ color: 'var(--electric-blue)', display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Result:</strong>
-                                    <p style={{ color: 'var(--white-slate)', fontSize: '0.95rem' }}>{project.outcome}</p>
+                                    <strong style={{ color: 'var(--blue-accent)', display: 'block', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Result:</strong>
+                                    <p style={{ color: 'var(--text-primary)', fontSize: '0.95rem' }}>{project.outcome}</p>
                                 </div>
                             </div>
 
-                            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', paddingTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                            <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', paddingTop: '1.5rem', borderTop: '1px solid var(--border)' }}>
                                 {project.tech.map(t => (
                                     <span key={t} style={{
-                                        color: 'var(--blue-slate)',
+                                        color: 'var(--text-secondary)',
                                         fontFamily: 'var(--font-mono)',
                                         fontSize: '0.8rem',
                                         marginRight: '0.5rem'
@@ -121,10 +121,10 @@ const Portfolio = () => {
                 </div>
             </div>
 
-            <section className="section bg-light" style={{ textAlign: 'center', background: 'var(--navy-light)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+            <section className="section" style={{ textAlign: 'center', background: 'var(--bg-light)', borderTop: '1px solid var(--border)' }}>
                 <div className="container">
-                    <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Interested in working with us?</h2>
-                    <p style={{ color: 'var(--blue-slate)', marginBottom: '2.5rem', maxWidth: '600px', margin: '0 auto 2.5rem' }}>
+                    <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>Interested in working with us?</h2>
+                    <p style={{ color: 'var(--text-secondary)', marginBottom: '2.5rem', maxWidth: '600px', margin: '0 auto 2.5rem' }}>
                         We are currently accepting new projects for Q3.
                     </p>
                     <Link to="/contact" className="btn btn-primary">
@@ -137,3 +137,4 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
+

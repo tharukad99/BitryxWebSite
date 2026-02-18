@@ -33,9 +33,9 @@ const Navbar = () => {
         <nav
             className={`navbar ${scrolled ? 'scrolled' : ''}`}
             style={{
-                background: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(11, 27, 50, 0.05)',
-                backdropFilter: 'blur(10px)',
-                borderBottom: scrolled ? '1px solid rgba(0,0,0,0.05)' : 'none',
+                background: scrolled ? 'rgba(2, 6, 23, 0.8)' : 'transparent',
+                backdropFilter: scrolled ? 'blur(10px)' : 'none',
+                borderBottom: scrolled ? '1px solid var(--border)' : 'none',
                 transition: 'all 0.3s ease'
             }}
         >
@@ -53,7 +53,7 @@ const Navbar = () => {
                     <span style={{
                         fontSize: '1.5rem',
                         fontWeight: 800,
-                        color: scrolled ? 'var(--navy-dark)' : 'var(--navy-dark)',
+                        color: 'var(--text-primary)',
                         letterSpacing: '-0.5px'
                     }}>
                         BitRyx
@@ -70,7 +70,7 @@ const Navbar = () => {
                             style={({ isActive }) => ({
                                 fontWeight: 500,
                                 fontSize: '0.95rem',
-                                color: isActive ? 'var(--blue-accent)' : (scrolled ? 'var(--navy-primary)' : 'var(--navy-dark)'),
+                                color: isActive ? 'var(--blue-accent)' : 'var(--text-primary)',
                                 position: 'relative',
                                 transition: 'color 0.2s'
                             })}
@@ -87,7 +87,7 @@ const Navbar = () => {
                 <button
                     className="mobile-toggle"
                     onClick={() => setIsOpen(!isOpen)}
-                    style={{ background: 'none', border: 'none', color: 'var(--navy-dark)', cursor: 'pointer', display: 'none' }}
+                    style={{ background: 'none', border: 'none', color: 'var(--text-primary)', cursor: 'pointer', display: 'none' }}
                 >
                     {isOpen ? <X size={28} /> : <Menu size={28} />}
                 </button>
@@ -106,7 +106,7 @@ const Navbar = () => {
                             top: 'var(--header-height)',
                             left: 0,
                             right: 0,
-                            background: 'white',
+                            background: 'var(--navy-primary)',
                             zIndex: 998,
                             padding: '2rem',
                             display: 'flex',
@@ -124,7 +124,7 @@ const Navbar = () => {
                                 style={({ isActive }) => ({
                                     fontSize: '1.25rem',
                                     fontWeight: 600,
-                                    color: isActive ? 'var(--blue-accent)' : 'var(--navy-dark)',
+                                    color: isActive ? 'var(--blue-accent)' : 'var(--text-primary)',
                                     textDecoration: 'none'
                                 })}
                             >
@@ -167,3 +167,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

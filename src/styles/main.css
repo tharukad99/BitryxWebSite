@@ -1,42 +1,44 @@
 :root {
-  /* Premium Corporate Navy Palette */
-  --navy-dark: #0B1B32;
-  /* Deepest Navy (Footer/Hero) */
-  --navy-primary: #142850;
-  /* Main Brand Color */
-  --navy-light: #2C4E80;
-  /* Light Navy (Accents) */
+  /* Premium Dark AI Palette */
+  --navy-dark: #020617;
+  /* Deepest Background (Slate 950) */
+  --navy-primary: #0F172A;
+  /* Main Background (Slate 900) */
+  --navy-light: #1E293B;
+  /* Card Background (Slate 800) */
 
-  --blue-accent: #0099FF;
-  /* Tech Blue (Buttons/Highlights) */
-  --cyan-accent: #00C2CB;
-  /* Cyan (Secondary Accent) */
+  --blue-accent: #38BDF8;
+  /* Sky 400 - Bright Blue */
+  --cyan-accent: #22D3EE;
+  /* Cyan 400 - Bright Cyan */
 
-  --bg-white: #FFFFFF;
-  --bg-light: #F4F7FB;
-  /* Very subtle blue-grey */
-  --bg-card: #FFFFFF;
+  --bg-white: #020617;
+  /* Replaces white with dark background */
+  --bg-light: #0F172A;
+  /* Replaces light bg with slightly lighter dark */
+  --bg-card: #1E293B;
+  /* Card background */
 
-  --text-primary: #0F172A;
-  /* Dark Slate for text on white */
-  --text-secondary: #475569;
-  /* Muted Slate */
+  --text-primary: #F8FAFC;
+  /* Slate 50 - Main Text */
+  --text-secondary: #94A3B8;
+  /* Slate 400 - Secondary Text */
   --text-white: #FFFFFF;
 
-  --border: #E2E8F0;
+  --border: #334155;
+  /* Slate 700 - Borders */
 
-  --shadow-sm: 0 1px 2px 0 rgba(11, 27, 50, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(11, 27, 50, 0.1);
-  --shadow-lg: 0 20px 25px -5px rgba(11, 27, 50, 0.1);
-  --shadow-hover: 0 25px 50px -12px rgba(11, 27, 50, 0.15);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  --shadow-hover: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
 
-  --gradient-main: linear-gradient(135deg, #0B1B32 0%, #142850 100%);
-  --gradient-accent: linear-gradient(90deg, #0099FF 0%, #00C2CB 100%);
+  --gradient-main: linear-gradient(135deg, #020617 0%, #0F172A 100%);
+  --gradient-accent: linear-gradient(90deg, #38BDF8 0%, #22D3EE 100%);
 
   /* Typography */
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'Outfit', 'Inter', sans-serif;
-  /* Modern, tech-friendly heading font */
 
   --container-width: 1280px;
   --header-height: 80px;
@@ -66,7 +68,7 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading);
-  color: var(--navy-dark);
+  color: var(--text-primary);
   line-height: 1.2;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -103,7 +105,7 @@ img {
 }
 
 .text-navy {
-  color: var(--navy-dark);
+  color: var(--text-primary);
 }
 
 .text-accent {
@@ -130,26 +132,28 @@ img {
 
 .btn-primary {
   background: var(--gradient-accent);
-  color: white;
-  box-shadow: 0 4px 15px rgba(0, 153, 255, 0.3);
+  color: #020617;
+  /* Dark text on bright button */
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
   border: none;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 153, 255, 0.4);
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4);
+  color: #000;
 }
 
 .btn-secondary {
-  background: white;
-  color: var(--navy-primary);
+  background: transparent;
+  color: var(--text-primary);
   border: 1px solid var(--border);
 }
 
 .btn-secondary:hover {
   border-color: var(--blue-accent);
   color: var(--blue-accent);
-  background: var(--bg-light);
+  background: rgba(56, 189, 248, 0.1);
 }
 
 .btn-white {
@@ -166,7 +170,7 @@ img {
 
 /* Cards */
 .card-service {
-  background: white;
+  background: var(--bg-card);
   padding: 2.5rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
@@ -179,7 +183,7 @@ img {
 .card-service:hover {
   transform: translateY(-8px);
   box-shadow: var(--shadow-hover);
-  border-color: transparent;
+  border-color: var(--blue-accent);
 }
 
 .card-service::before {
@@ -211,9 +215,10 @@ img {
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(2, 6, 23, 0.8);
   backdrop-filter: blur(12px);
   box-shadow: var(--shadow-sm);
+  border-bottom: 1px solid var(--border);
 }
 
 /* Gradients */
@@ -265,12 +270,12 @@ img {
   align-items: center;
   justify-content: center;
   margin-bottom: 1.5rem;
-  background: var(--bg-light);
-  color: var(--navy-primary);
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--blue-accent);
   transition: all 0.3s ease;
 }
 
 .card-service:hover .icon-box {
-  background: var(--navy-primary);
+  background: var(--blue-accent);
   color: white;
 }

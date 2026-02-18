@@ -72,12 +72,13 @@ const Services = () => {
         <div style={{ paddingTop: 'var(--header-height)', overflowX: 'hidden' }}>
 
             {/* Header */}
-            <section className="bg-light text-center" style={{ padding: '6rem 0 4rem' }}>
+            <section style={{ padding: '6rem 0 4rem', background: 'var(--navy-dark)', color: 'var(--text-primary)' }}>
                 <div className="container">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
+                        className="text-center"
                     >
                         <span style={{
                             color: 'var(--blue-accent)',
@@ -90,7 +91,7 @@ const Services = () => {
                         }}>
                             Our Expertise
                         </span>
-                        <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: 'var(--navy-dark)' }}>
+                        <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: 'var(--text-primary)' }}>
                             Services & Solutions
                         </h1>
                         <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto', fontSize: '1.2rem', lineHeight: 1.6 }}>
@@ -112,7 +113,7 @@ const Services = () => {
                         style={{ marginBottom: '6rem' }}
                     >
                         <div style={{ marginBottom: '2.5rem', borderLeft: '4px solid var(--blue-accent)', paddingLeft: '1.5rem' }}>
-                            <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem', color: 'var(--navy-primary)' }}>{category.category}</h2>
+                            <h2 style={{ fontSize: '2rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>{category.category}</h2>
                             <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem' }}>{category.desc}</p>
                         </div>
 
@@ -134,10 +135,10 @@ const Services = () => {
                                         <div className="icon-box" style={{ marginBottom: 0 }}>
                                             {item.icon}
                                         </div>
-                                        <span style={{ fontSize: '2rem', fontWeight: 800, color: '#E2E8F0', lineHeight: 1 }}>{item.id}</span>
+                                        <span style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--border)', lineHeight: 1 }}>{item.id}</span>
                                     </div>
 
-                                    <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', color: 'var(--navy-dark)' }}>{item.title}</h3>
+                                    <h3 style={{ fontSize: '1.25rem', marginBottom: '0.75rem', color: 'var(--text-primary)' }}>{item.title}</h3>
                                     <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6 }}>{item.desc}</p>
                                 </motion.div>
                             ))}
@@ -147,7 +148,7 @@ const Services = () => {
             </div>
 
             {/* CTA */}
-            <section className="section text-center" style={{ background: 'var(--navy-dark)', color: 'white' }}>
+            <section className="section text-center" style={{ background: 'var(--bg-light)', color: 'white', borderTop: '1px solid var(--border)' }}>
                 <div className="container">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
@@ -155,7 +156,7 @@ const Services = () => {
                         viewport={{ once: true }}
                     >
                         <h2 style={{ marginBottom: '1.5rem', fontSize: '2.5rem', color: 'white' }}>Have a specific requirement?</h2>
-                        <p style={{ marginBottom: '2.5rem', color: '#94A3B8', maxWidth: '600px', margin: '0 auto 2.5rem', fontSize: '1.1rem' }}>
+                        <p style={{ marginBottom: '2.5rem', color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 2.5rem', fontSize: '1.1rem' }}>
                             We specialize in custom solutions. If you don't see exactly what you need, let's talk.
                         </p>
                         <Link to="/contact" className="btn btn-primary" style={{ padding: '1rem 3rem', borderRadius: '50px' }}>
@@ -169,3 +170,4 @@ const Services = () => {
 };
 
 export default Services;
+

@@ -6,17 +6,17 @@ import '../styles/main.css';
 const Contact = () => {
     return (
         <div style={{ paddingTop: 'var(--header-height)' }}>
-            <section className="bg-grid text-white text-center" style={{ padding: '8rem 0 4rem' }}>
-                <div className="container">
+            <section style={{ padding: '8rem 0 4rem', background: 'var(--navy-dark)', color: 'var(--text-primary)' }}>
+                <div className="container text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                     >
-                        <span className="text-accent font-mono mb-4 block">Say Hello</span>
-                        <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
+                        <span className="text-accent font-mono mb-4 block" style={{ color: 'var(--blue-accent)', display: 'block', marginBottom: '1rem', fontWeight: 600 }}>Say Hello</span>
+                        <h1 style={{ marginBottom: '1.5rem', fontSize: 'clamp(2.5rem, 5vw, 4rem)', color: 'var(--text-primary)' }}>
                             Let's Build Something Great
                         </h1>
-                        <p style={{ color: 'var(--blue-slate)', maxWidth: '600px', margin: '0 auto', fontSize: '1.2rem' }}>
+                        <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto', fontSize: '1.2rem' }}>
                             Have a project in mind? We'd love to discuss it.
                         </p>
                     </motion.div>
@@ -27,8 +27,8 @@ const Contact = () => {
                 <div className="grid-2" style={{ gap: '4rem', alignItems: 'flex-start' }}>
                     {/* Contact Info */}
                     <div>
-                        <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>Get in Touch</h2>
-                        <p style={{ fontSize: '1.1rem', marginBottom: '3rem', color: 'var(--blue-slate)', lineHeight: 1.6 }}>
+                        <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>Get in Touch</h2>
+                        <p style={{ fontSize: '1.1rem', marginBottom: '3rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
                             Whether you have a question about features, pricing, or need a demo, our team is ready to answer all your questions.
                         </p>
 
@@ -36,16 +36,16 @@ const Contact = () => {
                             <div className="card-service" style={{ padding: '1.5rem', display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
                                 <div style={{ color: 'var(--blue-accent)' }}><Mail size={24} /></div>
                                 <div>
-                                    <h3 style={{ fontSize: '1rem', marginBottom: '0.25rem', color: 'var(--navy-dark)' }}>Chat with us</h3>
+                                    <h3 style={{ fontSize: '1rem', marginBottom: '0.25rem', color: 'var(--text-primary)' }}>Chat with us</h3>
                                     <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Our friendly team is here to help.</p>
-                                    <a href="mailto:hello@bitryx.com" className="text-accent font-mono">hello@bitryx.com</a>
+                                    <a href="mailto:hello@bitryx.com" className="text-accent font-mono" style={{ color: 'var(--blue-accent)' }}>hello@bitryx.com</a>
                                 </div>
                             </div>
 
                             <div className="card-service" style={{ padding: '1.5rem', display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
                                 <div style={{ color: 'var(--blue-accent)' }}><MapPin size={24} /></div>
                                 <div>
-                                    <h3 style={{ fontSize: '1rem', marginBottom: '0.25rem', color: 'var(--navy-dark)' }}>Office</h3>
+                                    <h3 style={{ fontSize: '1rem', marginBottom: '0.25rem', color: 'var(--text-primary)' }}>Office</h3>
                                     <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
                                         123 Tech Avenue, London<br />
                                         United Kingdom

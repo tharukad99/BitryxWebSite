@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Palette, Layers, Server, Code, HeartHandshake, CheckCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import '../styles/main.css';
+import AiBackground from '../components/AiBackground';
 
 const Home = () => {
     const scrollRef = useRef(null);
@@ -23,10 +24,11 @@ const Home = () => {
                     display: 'flex',
                     alignItems: 'center',
                     paddingTop: 'var(--header-height)',
-                    background: 'radial-gradient(ellipse at top right, #EBF1FF 0%, #FFFFFF 60%)' // Very subtle blue tint
+                    // Background removed to let global dark theme and AiBackground show
                 }}
             >
-                <div className="container">
+                <AiBackground />
+                <div className="container" style={{ position: 'relative', zIndex: 1 }}>
                     <div className="grid-2" style={{ alignItems: 'center', gap: '4rem' }}>
 
                         {/* Text Content */}
@@ -38,13 +40,14 @@ const Home = () => {
                             <span style={{
                                 display: 'inline-block',
                                 padding: '0.5rem 1rem',
-                                background: '#E0F2FE',
-                                color: '#0369A1',
+                                background: 'rgba(56, 189, 248, 0.1)',
+                                color: 'var(--blue-accent)',
                                 borderRadius: '50px',
                                 fontSize: '0.85rem',
                                 fontWeight: 600,
                                 marginBottom: '1.5rem',
-                                letterSpacing: '0.5px'
+                                letterSpacing: '0.5px',
+                                border: '1px solid rgba(56, 189, 248, 0.2)'
                             }}>
                                 YOUR TECHNOLOGY PARTNER
                             </span>
@@ -54,9 +57,9 @@ const Home = () => {
                                 marginBottom: '1.5rem',
                                 fontWeight: 800,
                                 lineHeight: 1.1,
-                                color: 'var(--navy-dark)'
+                                color: 'var(--text-primary)'
                             }}>
-                                Future-Proof Software Solutions.
+                                Future-Proof <span className="text-gradient">Software Solutions.</span>
                             </h1>
 
                             <p style={{
@@ -102,38 +105,39 @@ const Home = () => {
                         >
                             {/* Main Card */}
                             <div style={{
-                                background: 'white',
+                                background: 'var(--bg-card)',
                                 borderRadius: '24px',
                                 padding: '3rem',
-                                boxShadow: '0 40px 80px -20px rgba(11, 27, 50, 0.15)',
+                                boxShadow: '0 40px 80px -20px rgba(0, 0, 0, 0.5)', /* Darker shadow */
                                 position: 'relative',
-                                zIndex: 2
+                                zIndex: 2,
+                                border: '1px solid var(--border)'
                             }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-                                    <div style={{ width: '50px', height: '50px', background: '#F0F9FF', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                        <Code size={24} color="#0284C7" />
+                                    <div style={{ width: '50px', height: '50px', background: 'rgba(56, 189, 248, 0.1)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        <Code size={24} color="#38BDF8" />
                                     </div>
                                     <div>
-                                        <h3 style={{ fontSize: '1.25rem' }}>Custom Development</h3>
-                                        <p style={{ color: '#64748B' }}>Tailored to your workflow</p>
+                                        <h3 style={{ fontSize: '1.25rem', color: 'var(--text-primary)' }}>Custom Development</h3>
+                                        <p style={{ color: 'var(--text-secondary)' }}>Tailored to your workflow</p>
                                     </div>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-                                    <div style={{ width: '50px', height: '50px', background: '#ecfdf5', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                        <Server size={24} color="#059669" />
+                                    <div style={{ width: '50px', height: '50px', background: 'rgba(34, 211, 238, 0.1)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        <Server size={24} color="#22D3EE" />
                                     </div>
                                     <div>
-                                        <h3 style={{ fontSize: '1.25rem' }}>Cloud Infrastructure</h3>
-                                        <p style={{ color: '#64748B' }}>Secure & Scalable Azure Setup</p>
+                                        <h3 style={{ fontSize: '1.25rem', color: 'var(--text-primary)' }}>Cloud Infrastructure</h3>
+                                        <p style={{ color: 'var(--text-secondary)' }}>Secure & Scalable Azure Setup</p>
                                     </div>
                                 </div>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                    <div style={{ width: '50px', height: '50px', background: '#fff1f2', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                        <HeartHandshake size={24} color="#e11d48" />
+                                    <div style={{ width: '50px', height: '50px', background: 'rgba(225, 29, 72, 0.1)', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                        <HeartHandshake size={24} color="#FB7185" />
                                     </div>
                                     <div>
-                                        <h3 style={{ fontSize: '1.25rem' }}>Ongoing Support</h3>
-                                        <p style={{ color: '#64748B' }}>24/7 Monitoring & Fixes</p>
+                                        <h3 style={{ fontSize: '1.25rem', color: 'var(--text-primary)' }}>Ongoing Support</h3>
+                                        <p style={{ color: 'var(--text-secondary)' }}>24/7 Monitoring & Fixes</p>
                                     </div>
                                 </div>
                             </div>
@@ -144,13 +148,14 @@ const Home = () => {
                                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                                 style={{
                                     position: 'absolute', top: '-1rem', right: '-1rem', zIndex: 3,
-                                    background: 'var(--navy-dark)', color: 'white', padding: '1rem 1.5rem', borderRadius: '12px',
-                                    boxShadow: '0 20px 40px -10px rgba(11, 27, 50, 0.3)'
+                                    background: 'var(--blue-accent)', color: '#000', padding: '1rem 1.5rem', borderRadius: '12px',
+                                    fontWeight: '600',
+                                    boxShadow: '0 20px 40px -10px rgba(0, 0, 0, 0.5)'
                                 }}
                             >
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                    <CheckCircle size={20} color="#00C2CB" />
-                                    <span style={{ fontWeight: 600 }}>Certified Experts</span>
+                                    <CheckCircle size={20} color="#000" />
+                                    <span>Certified Experts</span>
                                 </div>
                             </motion.div>
                         </motion.div>
@@ -159,20 +164,20 @@ const Home = () => {
             </section>
 
             {/* TRUSTED BY: Greyscale Logos */}
-            <section style={{ background: '#F8FAFC', padding: '3rem 0', borderTop: '1px solid #E2E8F0', borderBottom: '1px solid #E2E8F0' }}>
+            <section style={{ background: 'var(--bg-light)', padding: '3rem 0', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
                 <div className="container">
                     <p className="text-center" style={{
-                        fontSize: '0.85rem', color: '#94A3B8', marginBottom: '2rem',
+                        fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '2rem',
                         textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 600
                     }}>
                         Trusted by industry leaders
                     </p>
                     <div style={{
                         display: 'flex', justifyContent: 'center', gap: '4rem', flexWrap: 'wrap',
-                        alignItems: 'center', opacity: 0.6, filter: 'grayscale(100%)'
+                        alignItems: 'center', opacity: 0.6, filter: 'grayscale(100%) invert(1)' /* Invert for dark mode logos */
                     }}>
                         {clients.map(c => (
-                            <span key={c} style={{ fontSize: '1.5rem', fontWeight: 700, color: '#475569' }}>{c}</span>
+                            <span key={c} style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-secondary)' }}>{c}</span>
                         ))}
                     </div>
                 </div>
@@ -183,14 +188,14 @@ const Home = () => {
                 <div className="container">
                     <div className="text-center" style={{ marginBottom: '5rem' }}>
                         <span style={{ color: 'var(--blue-accent)', fontWeight: 600, fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Our Expertise</span>
-                        <h2 style={{ fontSize: '2.5rem', marginTop: '1rem', color: 'var(--navy-dark)' }}>Comprehensive IT Solutions</h2>
+                        <h2 style={{ fontSize: '2.5rem', marginTop: '1rem', color: 'var(--text-primary)' }}>Comprehensive IT Solutions</h2>
                     </div>
 
                     <div className="grid-3">
                         {/* 1. Software Development */}
                         <div className="card-service">
                             <div className="icon-box"><Code size={30} /></div>
-                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Software Development</h3>
+                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Software Development</h3>
                             <ul style={{ color: 'var(--text-secondary)', lineHeight: '1.8' }}>
                                 <li>• Web Applications</li>
                                 <li>• Desktop & Internal Tools</li>
@@ -201,7 +206,7 @@ const Home = () => {
                         {/* 2. Consulting */}
                         <div className="card-service">
                             <div className="icon-box"><Layers size={30} /></div>
-                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Consulting & Advisory</h3>
+                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Consulting & Advisory</h3>
                             <ul style={{ color: 'var(--text-secondary)', lineHeight: '1.8' }}>
                                 <li>• Architecture Planning</li>
                                 <li>• Cost & Timeline Estimation</li>
@@ -212,7 +217,7 @@ const Home = () => {
                         {/* 3. Cloud & Infrastructure */}
                         <div className="card-service">
                             <div className="icon-box"><Server size={30} /></div>
-                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Cloud & Infrastructure</h3>
+                            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>Cloud & Infrastructure</h3>
                             <ul style={{ color: 'var(--text-secondary)', lineHeight: '1.8' }}>
                                 <li>• Cloud Hosting Setup (Azure)</li>
                                 <li>• System Monitoring</li>
@@ -230,13 +235,13 @@ const Home = () => {
             </section>
 
             {/* CTA SECTION: Navy Background for Contrast */}
-            <section className="section" style={{ background: 'var(--navy-dark)', color: 'white', textAlign: 'center' }}>
+            <section className="section" style={{ background: 'var(--bg-light)', color: 'white', textAlign: 'center', borderTop: '1px solid var(--border)' }}>
                 <div className="container">
                     <h2 style={{ color: 'white', fontSize: '2.5rem', marginBottom: '1.5rem' }}>Ready to transform your business?</h2>
-                    <p style={{ color: '#94A3B8', maxWidth: '600px', margin: '0 auto 3rem', fontSize: '1.1rem' }}>
+                    <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto 3rem', fontSize: '1.1rem' }}>
                         Partner with a team that delivers precision, performance, and peace of mind.
                     </p>
-                    <Link to="/contact" className="btn btn-white" style={{ padding: '1rem 3rem', borderRadius: '50px' }}>
+                    <Link to="/contact" className="btn btn-primary" style={{ padding: '1rem 3rem', borderRadius: '50px' }}>
                         Get a Free Consultation
                     </Link>
                 </div>
@@ -246,3 +251,4 @@ const Home = () => {
 };
 
 export default Home;
+
