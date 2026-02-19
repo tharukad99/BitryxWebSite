@@ -1,36 +1,21 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Send } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 import '../styles/main.css';
 
 const Contact = () => {
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
+    const location = useLocation();
 
-        try {
-            const response = await fetch("https://formsubmit.co/ajax/bitryxsolutions@gmail.com", {
-                method: "POST",
-                headers: {
-                    'Accept': 'application/json'
-                },
-                body: formData
-            });
-
-            const data = await response.json();
-
-            if (data.success === "true" || response.ok) {
-                alert("Message sent successfully!");
-                e.target.reset();
-            } else {
-                console.error("Submission failed:", data);
-                alert("Something went wrong. Please check your internet connection or email configuration.");
-            }
-        } catch (error) {
-            console.error("Error:", error);
-            alert("Something went wrong. Please try again later.");
+    useEffect(() => {
+        const queryString = location.search;
+        const urlParams = new URLSearchParams(queryString);
+        if (urlParams.get('success') === 'true') {
+            alert("Message sent successfully!");
+            // Clean up the URL
+            window.history.replaceState({}, document.title, window.location.pathname);
         }
-    };
+    }, [location]);
 
     return (
         <div style={{ paddingTop: 'var(--header-height)' }}>
@@ -91,9 +76,12 @@ const Contact = () => {
                         className="card-service"
                         style={{ padding: '3rem' }}
                     >
-                        <form onSubmit={handleSubmit}>
+                        <form action="https://formsubmit.co/bitryxsolutions@gmail.com" method="POST">
+                            {/* Disabled Captcha */}
                             <input type="hidden" name="_captcha" value="false" />
                             <input type="hidden" name="_subject" value="New Submission from BitRyx Website" />
+                            {/* Redirect back to the same page with success param */}
+                            <input type="hidden" name="_next" value={`${window.location.protocol}//${window.location.host}${window.location.pathname}?success=true`} />
 
                             <div style={{ marginBottom: '1.5rem' }}>
                                 <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: 600 }}>Name</label>
