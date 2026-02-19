@@ -10,7 +10,7 @@ const Home = () => {
     const { scrollYProgress } = useScroll({ target: scrollRef, offset: ["start start", "end start"] });
 
     // Client Logos for Social Proof
-    const clients = ["Microsoft", "Oracle", "SAP", "Salesforce", "Google Cloud", "Adobe"];
+    const clients = ["Microsoft", "Oracle", "SAP", "Salesforce", "Google Cloud"];
 
     return (
         <div style={{ overflowX: 'hidden' }}>
@@ -59,7 +59,7 @@ const Home = () => {
                                 lineHeight: 1.1,
                                 color: 'var(--text-primary)'
                             }}>
-                                Future-Proof <span className="text-gradient">Software Solutions.</span>
+                                Smart Systems <span className="text-gradient">Meet AI Futures</span>
                             </h1>
 
                             <p style={{
@@ -174,10 +174,10 @@ const Home = () => {
                     </p>
                     <div style={{
                         display: 'flex', justifyContent: 'center', gap: '4rem', flexWrap: 'wrap',
-                        alignItems: 'center', opacity: 0.6, filter: 'grayscale(100%) invert(1)' /* Invert for dark mode logos */
+                        alignItems: 'center', opacity: 0.8
                     }}>
                         {clients.map(c => (
-                            <span key={c} style={{ fontSize: '1.5rem', fontWeight: 700, color: 'var(--text-secondary)' }}>{c}</span>
+                            <span key={c} style={{ fontSize: '1.5rem', fontWeight: 700, color: 'white' }}>{c}</span>
                         ))}
                     </div>
                 </div>

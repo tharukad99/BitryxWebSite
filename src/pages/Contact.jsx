@@ -1,9 +1,33 @@
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Mail, MapPin, Send } from 'lucide-react';
 import '../styles/main.css';
 
 const Contact = () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/bitryxsolutions@gmail.com", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (data.success === "true" || response.ok) {
+                alert("Message sent successfully!");
+                e.target.reset();
+            } else {
+                alert("Something went wrong. Please try again.");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Something went wrong. Please try again.");
+        }
+    };
+
     return (
         <div style={{ paddingTop: 'var(--header-height)' }}>
             <section style={{ padding: '8rem 0 4rem', background: 'var(--navy-dark)', color: 'var(--text-primary)' }}>
@@ -38,7 +62,7 @@ const Contact = () => {
                                 <div>
                                     <h3 style={{ fontSize: '1rem', marginBottom: '0.25rem', color: 'var(--text-primary)' }}>Chat with us</h3>
                                     <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.25rem' }}>Our friendly team is here to help.</p>
-                                    <a href="mailto:hello@bitryx.com" className="text-accent font-mono" style={{ color: 'var(--blue-accent)' }}>hello@bitryx.com</a>
+                                    <a href="mailto:bitryxsolutions@gmail.com" className="text-accent font-mono" style={{ color: 'var(--blue-accent)' }}>bitryxsolutions@gmail.com</a>
                                 </div>
                             </div>
 
@@ -47,7 +71,7 @@ const Contact = () => {
                                 <div>
                                     <h3 style={{ fontSize: '1rem', marginBottom: '0.25rem', color: 'var(--text-primary)' }}>Office</h3>
                                     <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-                                        123 Tech Avenue, London<br />
+                                        Manchester<br />
                                         United Kingdom
                                     </p>
                                 </div>
@@ -63,11 +87,16 @@ const Contact = () => {
                         className="card-service"
                         style={{ padding: '3rem' }}
                     >
-                        <form onSubmit={(e) => e.preventDefault()}>
+                        <form onSubmit={handleSubmit}>
+                            <input type="hidden" name="_captcha" value="false" />
+                            <input type="hidden" name="_subject" value="New Submission from BitRyx Website" />
+
                             <div style={{ marginBottom: '1.5rem' }}>
                                 <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: 600 }}>Name</label>
                                 <input
                                     type="text"
+                                    name="name"
+                                    required
                                     placeholder="Jane Doe"
                                     style={{
                                         width: '100%', padding: '1rem', borderRadius: '4px',
@@ -80,6 +109,8 @@ const Contact = () => {
                                 <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: 600 }}>Email</label>
                                 <input
                                     type="email"
+                                    name="email"
+                                    required
                                     placeholder="jane@company.com"
                                     style={{
                                         width: '100%', padding: '1rem', borderRadius: '4px',
@@ -91,6 +122,8 @@ const Contact = () => {
                             <div style={{ marginBottom: '2rem' }}>
                                 <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: 600 }}>Message</label>
                                 <textarea
+                                    name="message"
+                                    required
                                     placeholder="Tell us about your project..."
                                     rows="5"
                                     style={{

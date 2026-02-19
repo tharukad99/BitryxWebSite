@@ -43,7 +43,7 @@ const Navbar = () => {
 
                 {/* Logo Section */}
                 <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
-                    <div style={{ position: 'relative', width: '90px', height: '90px' }}>
+                    <div style={{ position: 'relative', width: '55px', height: '55px' }}>
                         <img
                             src={`${import.meta.env.BASE_URL}logo.png`}
                             alt="Bitryx Logo"
@@ -51,7 +51,7 @@ const Navbar = () => {
                         />
                     </div>
                     <span style={{
-                        fontSize: '1.5rem',
+                        fontSize: '2rem',
                         fontWeight: 800,
                         color: 'var(--text-primary)',
                         letterSpacing: '-0.5px'

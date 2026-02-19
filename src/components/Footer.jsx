@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Linkedin, Github, Mail, MapPin } from 'lucide-react';
+import { Facebook, Linkedin, Instagram, Mail, MapPin } from 'lucide-react';
 import '../styles/main.css';
 
 const Footer = () => {
@@ -14,9 +14,9 @@ const Footer = () => {
                         Empowering businesses with custom software, cloud solutions, and strategic technical consulting.
                     </p>
                     <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
-                        <a href="#" className="text-light-hover" style={{ color: 'var(--text-secondary)' }}><Linkedin size={20} /></a>
-                        <a href="#" className="text-light-hover" style={{ color: 'var(--text-secondary)' }}><Twitter size={20} /></a>
-                        <a href="#" className="text-light-hover" style={{ color: 'var(--text-secondary)' }}><Github size={20} /></a>
+                        <a href="https://www.instagram.com/bitryxsolutions/?fbclid=IwY2xjawQDO7VleHRuA2FlbQIxMABicmlkETB1REZBaDE3ZkNNcjcxSHFic3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHnWZoKRlsYqzGphIL_ZH0OVRkh9vR_WNKuyJ6dArxMAcT9TqdwVhiTYj632l_aem_dPu7QKnzUzfBgewr-JMqOQ" target="_blank" rel="noopener noreferrer" className="text-light-hover" style={{ color: 'var(--text-secondary)' }}><Instagram size={20} /></a>
+                        <a href="https://www.facebook.com/profile.php?id=61588270263509" target="_blank" rel="noopener noreferrer" className="text-light-hover" style={{ color: 'var(--text-secondary)' }}><Facebook size={20} /></a>
+                        <a href="https://www.linkedin.com/company/bitryx-solutions/" target="_blank" rel="noopener noreferrer" className="text-light-hover" style={{ color: 'var(--text-secondary)' }}><Linkedin size={20} /></a>
                     </div>
                 </div>
 
@@ -47,10 +47,10 @@ const Footer = () => {
                     <h4 style={{ color: 'var(--blue-accent)', marginBottom: '1.25rem', letterSpacing: '0.05em' }}>GET IN TOUCH</h4>
                     <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                         <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', color: 'var(--text-secondary)' }}>
-                            <Mail size={18} /> <a href="mailto:hello@bitryx.com" style={{ color: 'inherit' }}>hello@bitryx.com</a>
+                            <Mail size={18} /> <a href="mailto:bitryxsolutions@gmail.com" style={{ color: 'inherit' }}>bitryxsolutions@gmail.com</a>
                         </li>
                         <li style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', color: 'var(--text-secondary)' }}>
-                            <MapPin size={18} /> <span>London, United Kingdom</span>
+                            <MapPin size={18} /> <span>Manchester, United Kingdom</span>
                         </li>
                     </ul>
                 </div>

@@ -10,7 +10,7 @@ const servicesData = [
         category: "Software Development Services / Custom",
         desc: "We build robust applications tailored to your business needs.",
         items: [
-            { id: "01", title: "Web Applications", desc: "Responsive, scalable web platforms built with modern frameworks (React, Vue, Angular).", icon: <Code /> },
+            { id: "01", title: "Web Applications", desc: "Responsive, scalable web platforms built with modern frameworks.", icon: <Code /> },
             { id: "02", title: "Desktop or Internal Tools", desc: "Streamline operations with custom dashboards and management software.", icon: <Terminal /> },
             { id: "03", title: "APIs and Backend Systems", desc: "Secure, high-performance server-side logic and database integration.", icon: <Server /> }
         ]

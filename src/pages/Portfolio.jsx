@@ -7,28 +7,36 @@ import '../styles/main.css';
 const Portfolio = () => {
     const projects = [
         {
-            title: "ERP Dashboard for Manufacturing",
+            title: "Predictive AI Analytics Platform",
+            category: "Artificial Intelligence",
+            problem: "Client needed to predict market trends and customer behavior from massive datasets.",
+            solution: "Built a machine learning model integrated into a user-friendly interface.",
+            outcome: "Improved decision-making speed by 40% and increased forecast accuracy.",
+            tech: ["Python", "TensorFlow", "React", "AWS"]
+        },
+        {
+            title: "Enterprise SaaS Admin Dashboard",
             category: "Web Application",
-            problem: "Legacy spreadsheet systems were prone to errors and couldn't scale.",
-            solution: "A custom React dashboard with real-time inventory tracking and automated reporting.",
-            outcome: "Reduced manual data entry by 70% and improved stock accuracy.",
-            tech: ["React", "Node.js", "PostgreSQL", "Azure"]
+            problem: "Existing tools lacked real-time visibility into global operations.",
+            solution: "Developed a comprehensive dashboard with live data visualization and reporting.",
+            outcome: "Streamlined operations and reduced reporting time by 60%.",
+            tech: ["React", "D3.js", "Node.js", "GraphQL"]
         },
         {
-            title: "AI-Powered Customer Support",
-            category: "Internal Tool",
-            problem: "Support team overwhelmed with repetitive queries.",
-            solution: "Integrated an LLM-based chatbot within their existing CRM.",
-            outcome: "Decreased first-response time by 50%.",
-            tech: ["Python", "FastAPI", "OpenAI API", "Redis"]
+            title: "Global E-Commerce Platform",
+            category: "E-Commerce System",
+            problem: "Legacy platform couldn't handle high traffic and lacked mobile responsiveness.",
+            solution: "Architected a headless commerce solution with a modern frontend.",
+            outcome: "Achieved 99.9% uptime during peak sales and boosted mobile conversion by 35%.",
+            tech: ["Next.js", "Stripe", "PostgreSQL", "Redis"]
         },
         {
-            title: "E-Commerce Migration",
-            category: "Cloud Migration",
-            problem: "Existing on-prem server crashed during peak traffic.",
-            solution: "Migrated to a serverless architecture on Azure.",
-            outcome: "Zero downtime during Black Friday sales.",
-            tech: ["Azure Functions", "Cosmos DB", "CDN"]
+            title: "Secure FinTech Banking Portal",
+            category: "Financial Technology",
+            problem: "Need for a highly secure, compliant platform for processing international transactions.",
+            solution: "Implemented a bank-grade security portal with multi-factor authentication.",
+            outcome: "Processed over $10M in transactions securely in the first quarter.",
+            tech: ["Java", "Spring Boot", "Angular", "SQL"]
         }
     ];
 
@@ -57,10 +65,11 @@ const Portfolio = () => {
                     {projects.map((project, idx) => (
                         <motion.div
                             key={idx}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ duration: 0.5, delay: idx * 0.1 }}
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.5, delay: idx * 0.15 }}
+                            whileHover={{ y: -10, transition: { duration: 0.2 } }}
                             className="card-service"
                             style={{
                                 padding: '3rem',
@@ -71,15 +80,21 @@ const Portfolio = () => {
                                 overflow: 'hidden'
                             }}
                         >
-                            <div style={{
-                                position: 'absolute', top: 0, right: 0, padding: '1rem',
-                                opacity: 0.2, transform: 'scale(1.5)', pointerEvents: 'none'
-                            }}>
+                            <motion.div
+                                style={{
+                                    position: 'absolute', top: 0, right: 0, padding: '1rem',
+                                    opacity: 0.1, transform: 'scale(1.5)', pointerEvents: 'none',
+                                    transformOrigin: 'center center'
+                                }}
+                                animate={{ rotate: 360 }}
+                                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                            >
                                 <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-                                    <circle cx="50" cy="50" r="40" stroke="var(--blue-accent)" strokeWidth="2" />
-                                    <path d="M50 10 L50 90 M10 50 L90 50" stroke="var(--blue-accent)" strokeWidth="2" />
+                                    <circle cx="50" cy="50" r="40" stroke="var(--blue-accent)" strokeWidth="1" />
+                                    <path d="M50 10 L50 90 M10 50 L90 50" stroke="var(--blue-accent)" strokeWidth="1" />
+                                    <circle cx="50" cy="50" r="20" stroke="var(--blue-accent)" strokeWidth="1" strokeDasharray="4 4" />
                                 </svg>
-                            </div>
+                            </motion.div>
 
                             <span style={{
                                 fontFamily: 'var(--font-mono)',

@@ -30,7 +30,7 @@ const About = () => {
                             Engineering First,<br /><span className="text-gradient">Marketing Second.</span>
                         </h2>
                         <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
-                            BitRyx was founded to bridge the gap between complex technology and business value. We believe that great software shouldn't just look good—it must be performant, secure, and scalable.
+                            BitRyx was founded to bridge the gap between complex technology and business value. We believe that great software shouldn't just look good, it must be performant, secure, and scalable.
                         </p>
                         <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                             {[
