@@ -1,21 +1,34 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Send } from 'lucide-react';
-import { useLocation } from 'react-router-dom';
 import '../styles/main.css';
 
 const Contact = () => {
-    const location = useLocation();
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    useEffect(() => {
-        const queryString = location.search;
-        const urlParams = new URLSearchParams(queryString);
-        if (urlParams.get('success') === 'true') {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        const formData = new FormData(e.target);
+
+        try {
+            await fetch("https://formsubmit.co/bitryxsolutions@gmail.com", {
+                method: "POST",
+                mode: "no-cors",
+                body: formData
+            });
+
+            // With no-cors, we can't check response status, so we assume success if no network error.
             alert("Message sent successfully!");
-            // Clean up the URL
-            window.history.replaceState({}, document.title, window.location.pathname);
+            e.target.reset();
+        } catch (error) {
+            console.error("Error:", error);
+            // This only triggers on network failure (offline, DNS issues)
+            alert("Something went wrong. Please check your internet connection.");
+        } finally {
+            setIsSubmitting(false);
         }
-    }, [location]);
+    };
 
     return (
         <div style={{ paddingTop: 'var(--header-height)' }}>
@@ -76,12 +89,11 @@ const Contact = () => {
                         className="card-service"
                         style={{ padding: '3rem' }}
                     >
-                        <form action="https://formsubmit.co/bitryxsolutions@gmail.com" method="POST">
-                            {/* Disabled Captcha */}
+                        <form onSubmit={handleSubmit}>
+                            {/* Hidden settings for FormSubmit */}
                             <input type="hidden" name="_captcha" value="false" />
                             <input type="hidden" name="_subject" value="New Submission from BitRyx Website" />
-                            {/* Redirect back to the same page with success param */}
-                            <input type="hidden" name="_next" value={`${window.location.protocol}//${window.location.host}${window.location.pathname}?success=true`} />
+                            <input type="hidden" name="_template" value="table" />
 
                             <div style={{ marginBottom: '1.5rem' }}>
                                 <label style={{ display: 'block', marginBottom: '0.5rem', color: 'var(--text-primary)', fontSize: '0.9rem', fontWeight: 600 }}>Name</label>
@@ -126,8 +138,8 @@ const Contact = () => {
                                 ></textarea>
                             </div>
 
-                            <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                                Send Message <Send size={16} style={{ marginLeft: '10px' }} />
+                            <button type="submit" disabled={isSubmitting} className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', opacity: isSubmitting ? 0.7 : 1 }}>
+                                {isSubmitting ? 'Sending...' : 'Send Message'} <Send size={16} style={{ marginLeft: '10px' }} />
                             </button>
                         </form>
                     </motion.div>
