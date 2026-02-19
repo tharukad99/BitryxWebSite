@@ -7,31 +7,28 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
-        const object = Object.fromEntries(formData);
-        const json = JSON.stringify(object);
 
         try {
             const response = await fetch("https://formsubmit.co/ajax/bitryxsolutions@gmail.com", {
                 method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
                     'Accept': 'application/json'
                 },
-                body: json
+                body: formData
             });
 
             const data = await response.json();
 
-            if (response.ok) {
+            if (data.success === "true" || response.ok) {
                 alert("Message sent successfully!");
                 e.target.reset();
             } else {
                 console.error("Submission failed:", data);
-                alert("Something went wrong. Please try again.");
+                alert("Something went wrong. Please check your internet connection or email configuration.");
             }
         } catch (error) {
             console.error("Error:", error);
-            alert("Something went wrong. Please try again.");
+            alert("Something went wrong. Please try again later.");
         }
     };
 
