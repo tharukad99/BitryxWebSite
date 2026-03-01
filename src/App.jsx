@@ -8,6 +8,7 @@ import Services from './pages/Services';
 import Technologies from './pages/Technologies';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
+import Demo from './pages/Demo';
 import './styles/main.css';
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
                         <Route path="/technologies" element={<Technologies />} />
                         <Route path="/portfolio" element={<Portfolio />} />
                         <Route path="/contact" element={<Contact />} />
+                        <Route path="/demo" element={<Demo />} />
                     </Routes>
                 </main>
                 <Footer />

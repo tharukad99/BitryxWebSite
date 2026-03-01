@@ -76,7 +76,10 @@ const Home = () => {
                                 <Link to="/contact" className="btn btn-primary" style={{ padding: '1rem 2.5rem', borderRadius: '50px' }}>
                                     Start Your Project
                                 </Link>
-                                <Link to="/services" className="btn btn-secondary" style={{ padding: '1rem 2.5rem', borderRadius: '50px' }}>
+                                <Link to="/demo" className="btn btn-secondary" style={{ padding: '1rem 2.5rem', borderRadius: '50px' }}>
+                                    View Live Demo
+                                </Link>
+                                <Link to="/services" className="btn btn-secondary" style={{ padding: '1rem 2.5rem', borderRadius: '50px', background: 'transparent', border: '1px solid var(--border)' }}>
                                     Explore Services
                                 </Link>
                             </div>
