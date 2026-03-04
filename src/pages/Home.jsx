@@ -10,7 +10,7 @@ const Home = () => {
     const { scrollYProgress } = useScroll({ target: scrollRef, offset: ["start start", "end start"] });
 
     // Client Logos for Social Proof
-    const clients = ["Microsoft", "Oracle", "SAP", "Salesforce", "Google Cloud"];
+    const clients = ["Microsoft Azure", "Oracle", "SAP", "MS SQL", "Cloud"];
 
     return (
         <div style={{ overflowX: 'hidden' }}>
@@ -75,9 +75,6 @@ const Home = () => {
                             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                                 <Link to="/contact" className="btn btn-primary" style={{ padding: '1rem 2.5rem', borderRadius: '50px' }}>
                                     Start Your Project
-                                </Link>
-                                <Link to="/demo" className="btn btn-secondary" style={{ padding: '1rem 2.5rem', borderRadius: '50px' }}>
-                                    View Live Demo
                                 </Link>
                                 <Link to="/services" className="btn btn-secondary" style={{ padding: '1rem 2.5rem', borderRadius: '50px', background: 'transparent', border: '1px solid var(--border)' }}>
                                     Explore Services

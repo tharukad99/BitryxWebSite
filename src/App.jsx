@@ -9,6 +9,7 @@ import Technologies from './pages/Technologies';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import Demo from './pages/Demo';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 import './styles/main.css';
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
                         <Route path="/portfolio" element={<Portfolio />} />
                         <Route path="/contact" element={<Contact />} />
                         <Route path="/demo" element={<Demo />} />
+                        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                     </Routes>
                 </main>
                 <Footer />

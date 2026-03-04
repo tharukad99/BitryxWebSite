@@ -39,6 +39,7 @@ const Footer = () => {
                         <li><Link to="/portfolio" style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Our Work</Link></li>
                         <li><Link to="/technologies" style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Tech Stack</Link></li>
                         <li><Link to="/contact" style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Contact</Link></li>
+                        <li><Link to="/privacy-policy" style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Privacy Policy</Link></li>
                     </ul>
                 </div>
 
